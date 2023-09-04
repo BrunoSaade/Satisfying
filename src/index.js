@@ -1,8 +1,11 @@
 import React from "react";
-import { Container } from "./pages/Login/styles";
+import Login from "./pages/Login";
+import { Container } from "./styles/styles";
 
 export default function App() {
   return (
-    <Container />
+    <Container>
+      <Login></Login>
+    </Container>
   );
 }
