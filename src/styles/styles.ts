@@ -7,4 +7,5 @@ export const Container = styled(View)`
   width: 100%;
   height: 100%;
   background-color: ${theme.colors.primary[0]};  
+  fontFamily: AveriaLibre-Regular;
 `;
