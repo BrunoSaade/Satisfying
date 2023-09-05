@@ -1,11 +1,21 @@
 import styled from 'styled-components';
-import { View } from 'react-native'; // Assuming you're using React Native
+import { Text, View } from 'react-native'; // Assuming you're using React Native
 import { theme } from '../theme/styles';
 
-export const Container = styled(View)`
+interface ContainerProps {
+  customWidth?: string;
+  alignItems?: string;
+}
+
+export const Container = styled(View)<ContainerProps>`
   flex: 1;
-  width: 100%;
-  height: 100%;
   background-color: ${theme.colors.primary[0]};  
-  fontFamily: AveriaLibre-Regular;
+  justifyContent: center;
+  alignItems: ${(props) => (props.alignItems ? props.alignItems : 'center')};
+  width: 100%;
+  width: ${(props) => (props.customWidth ? props.customWidth : '100%')};
+`;
+
+export const TextDefault = styled(Text)`
+  fontFamily: ${theme.font};
 `;
