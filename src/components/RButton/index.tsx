@@ -6,13 +6,15 @@ interface RButtonProps {
   label: string;
   onPress?: () => void;
   color: string;
+  customHeight?: string;
+  style?: object,
 }
 
-const RButton: FC<RButtonProps> = ({ label, onPress, color }) => {
-  const styles = getRButtonStyles({ color });
+const RButton: FC<RButtonProps> = ({ label, onPress, color, customHeight, style }) => {
+  const styles = getRButtonStyles({ color, customHeight });
 
   return (
-    <TouchableOpacity style={styles.r_button} onPress={onPress}>
+    <TouchableOpacity style={{...styles.r_button, ...style}} onPress={onPress}>
       <Text style={styles.r_button__text}>{label}</Text>
     </TouchableOpacity>
   );

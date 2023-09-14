@@ -5,6 +5,7 @@ import { theme } from '../theme/styles';
 interface ContainerProps {
   customWidth?: string;
   alignItems?: string;
+  customPaddingVertical?: string;
 }
 
 export const S = {
@@ -15,6 +16,7 @@ export const S = {
     alignItems: ${(props) => (props.alignItems ? props.alignItems : 'center')};
     width: 100%;
     width: ${(props) => (props.customWidth ? props.customWidth : '100%')};
+    paddingVertical: ${(props) => (props.customPaddingVertical ? props.customPaddingVertical : '')}
   `,
   
   TextDefault: styled(Text)`

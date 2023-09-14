@@ -6,6 +6,7 @@ import { theme } from '../../theme/styles';
 interface RButtonProps {
   customWidth?: string;
   color: string;
+  customHeight?: string
 }
 
 export const getRButtonStyles = (props: RButtonProps) => {
@@ -13,15 +14,13 @@ export const getRButtonStyles = (props: RButtonProps) => {
   return StyleSheet.create({
     r_button: {
       backgroundColor: theme.colors[props.color],
-      padding: 10,
-      height: 51,
+      height: props.customHeight || 51,
+      width: props.customWidth || '100%',
       alignItems: 'center',
       justifyContent: 'center',
-      marginTop: 10,
-      width: props.customWidth || '100%',
     },
     r_button__text: {
       color: 'white',
-      fontSize: 28,
+      fontSize: !!props.customHeight ? 24 : 28,
     },
   })}
