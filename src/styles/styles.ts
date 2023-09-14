@@ -7,15 +7,17 @@ interface ContainerProps {
   alignItems?: string;
 }
 
-export const Container = styled(View)<ContainerProps>`
-  flex: 1;
-  background-color: ${theme.colors.primary[0]};  
-  justifyContent: center;
-  alignItems: ${(props) => (props.alignItems ? props.alignItems : 'center')};
-  width: 100%;
-  width: ${(props) => (props.customWidth ? props.customWidth : '100%')};
-`;
-
-export const TextDefault = styled(Text)`
-  fontFamily: ${theme.font};
-`;
+export const S = {
+  Container: styled(View)<ContainerProps>`
+    flex: 1;
+    background-color: ${theme.colors.primary[0]};  
+    justifyContent: center;
+    alignItems: ${(props) => (props.alignItems ? props.alignItems : 'center')};
+    width: 100%;
+    width: ${(props) => (props.customWidth ? props.customWidth : '100%')};
+  `,
+  
+  TextDefault: styled(Text)`
+    fontFamily: ${theme.font};
+  `,
+} 
