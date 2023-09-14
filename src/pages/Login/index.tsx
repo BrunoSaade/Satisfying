@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Container, TextDefault } from "../../styles/styles";
+import { S } from "../../styles/styles";
 import { styles } from "./styles";
 
 import Icon from 'react-native-vector-icons/MaterialIcons'
@@ -8,20 +8,25 @@ import Icon from 'react-native-vector-icons/MaterialIcons'
 import RInput from "../../components/RInput";
 import RButton from "../../components/RButton";
 
-export default function Login() {
+export default function Login(props: any) {
+
+  const handleLogin = () => {
+    props.navigation.push('Drawer')
+  };
+
   return (
-    <Container>
-      <Container customWidth="653px">
-        <Container style={styles.view_logo}>
-          <TextDefault style={styles.view_logo__text}>Satisfying.you</TextDefault>
+    <S.Container>
+      <S.Container customWidth="653px">
+        <S.Container style={styles.view_logo}>
+          <S.TextDefault style={styles.view_logo__text}>Satisfying.you</S.TextDefault>
           <Icon name="sentiment-satisfied" size={60} color="white" />
-        </Container>
-        <Container>
+        </S.Container>
+        <S.Container>
           <RInput label="E-mail" placeholder="E-mail"/>
           <RInput label="Senha" placeholder="Digite sua senha" isPassword/>
-          <RButton label="Entrar"/>
-        </Container>
-      </Container>
-    </Container>
+          <RButton label="Entrar" onPress={handleLogin}/>
+        </S.Container>
+      </S.Container>
+    </S.Container>
   );
 };
