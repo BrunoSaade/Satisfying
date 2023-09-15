@@ -11,7 +11,7 @@ interface ContainerProps {
 export const S = {
   Container: styled(View)<ContainerProps>`
     flex: 1;
-    background-color: ${theme.colors.primary[0]};  
+    background-color: ${theme.colors.primary[50]};  
     justifyContent: center;
     alignItems: ${(props) => (props.alignItems ? props.alignItems : 'center')};
     width: 100%;
