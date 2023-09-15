@@ -11,15 +11,23 @@ interface RInputProps {
   onChangeText?: (text: string) => void;
   value?: string;
   isPassword?: boolean;
+  style?: object,
 }
 
-const RInput: FC<RInputProps> = ({ label, placeholder, onChangeText, value, isPassword = false }) => {
+const RInput: FC<RInputProps> = ({ 
+  label, 
+  placeholder,
+  onChangeText, 
+  value, 
+  isPassword = false, 
+  style 
+}) => {
   return (
     <S.Container alignItems="start">
       <S.TextDefault style={styles.r_input__label}>{label}</S.TextDefault>
       <TextInput
         placeholder={placeholder}
-        style={styles.r_input}
+        style={{...styles.r_input, ...style}}
         secureTextEntry={isPassword}
       />
     </S.Container>

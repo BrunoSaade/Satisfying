@@ -9,9 +9,6 @@ export default function RDrawer(props: any) {
 
   return (
     <DrawerContentScrollView {...props}>
-      <View>
-        <Text>Ola</Text>
-      </View>
       <DrawerItemList {...props} />
       <DrawerItem label="Sair" onPress={handleLogout}/>
     </DrawerContentScrollView>
