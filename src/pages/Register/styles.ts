@@ -1,6 +1,3 @@
-// import { View } from 'react-native';
-// import styled from 'styled-components';
+import { StyleSheet } from 'react-native';
 
-// export const Container = styled(View)`
-  
-// `;
+export const styles = StyleSheet.create({})
