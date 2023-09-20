@@ -2,16 +2,17 @@
 import React, { FC } from 'react';
 import { TextInput } from 'react-native';
 
-import { styles } from './styles';
+import { getRInputStyles } from './styles';
 import { S } from '../../styles/styles';
 
 interface RInputProps {
-  label: string;
+  label?: string;
   placeholder?: string;
   onChangeText?: (text: string) => void;
   value?: string;
   isPassword?: boolean;
   style?: object,
+  fontSize?: number,
 }
 
 const RInput: FC<RInputProps> = ({ 
@@ -20,11 +21,13 @@ const RInput: FC<RInputProps> = ({
   onChangeText, 
   value, 
   isPassword = false, 
-  style 
+  style,
+  fontSize
 }) => {
+  const styles = getRInputStyles({ fontSize });
   return (
     <S.Container alignItems="start">
-      <S.TextDefault style={styles.r_input__label}>{label}</S.TextDefault>
+      {label && <S.TextDefault style={styles.r_input__label}>{label}</S.TextDefault>}
       <TextInput
         placeholder={placeholder}
         style={{...styles.r_input, ...style}}

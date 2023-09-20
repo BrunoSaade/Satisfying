@@ -1,5 +1,6 @@
 import { DrawerContentScrollView, DrawerItem, DrawerItemList } from "@react-navigation/drawer";
 import { View, Text } from "react-native";
+import { styles } from "./styles";
 
 export default function RDrawer(props: any) {
 
@@ -8,9 +9,9 @@ export default function RDrawer(props: any) {
   }
 
   return (
-    <DrawerContentScrollView {...props}>
+    <DrawerContentScrollView {...props} style={styles.r_drawer}>
       <DrawerItemList {...props} />
-      <DrawerItem label="Sair" onPress={handleLogout}/>
+      <DrawerItem labelStyle={styles.r_drawer__logout} label="Sair" onPress={handleLogout}/>
     </DrawerContentScrollView>
   )
 }
