@@ -13,7 +13,7 @@ export default function Home() {
       <S.Container>
         <S.Container>
           <S.Container customPaddingHorizontal="30px" customPaddingVertical="30px">
-            <RInput style={{height: 36}} fontSize={20} placeholder="Insira o termo da busca..."/>
+            <RInput icon="search" style={{height: 36}} fontSize={20} placeholder="Insira o termo da busca..."/>
           </S.Container>
           <S.Container style={{marginTop: 20}}>
             <CardList />
