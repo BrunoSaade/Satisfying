@@ -12,12 +12,11 @@ const Stack = createStackNavigator()
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Login" component={Login} options={{headerShown: false}}/>
-        <Stack.Screen name="Drawer" component={Drawer} options={{headerShown: false}}/>
-        <Stack.Screen name="Nova Conta" component={Register}/>
-        <Stack.Screen name="Recuperação de senha" component={RecoverPassword}/>
-        <Stack.Screen name="Home" component={Home} />
+      <Stack.Navigator initialRouteName="Login">
+        <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
+        <Stack.Screen name="Drawer" component={Drawer} options={{ headerShown: false }} />
+        <Stack.Screen name="Nova Conta" component={Register} />
+        <Stack.Screen name="Recuperação de senha" component={RecoverPassword} />
       </Stack.Navigator>
     </NavigationContainer>
   );

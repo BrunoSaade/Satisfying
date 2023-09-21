@@ -2,10 +2,10 @@ import React from "react";
 import { S } from "../../styles/styles";
 import { Text } from "react-native";
 
-export default function Home() {
+export default function ModifySearch() {
   return (
     <S.Container>
-      <Text>Home Page</Text>
+      <Text>ModifySearch Page</Text>
     </S.Container>
   );
 }
