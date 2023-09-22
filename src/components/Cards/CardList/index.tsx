@@ -1,16 +1,17 @@
 import React from "react";
 import { S } from "../../../styles/styles";
-import { FlatList, Image, Text, View } from "react-native";
+import { FlatList } from "react-native";
 import { styles } from "./styles";
 import Card from "../Card";
-import cardsData from '../../../store/cardsData.json'
+
+import { getCardDatas } from "../../../store/getters";
 
 export default function CardList() {
   return (
     <S.Container>
       <FlatList
-        data={cardsData}
-        keyExtractor={(item) => item.title}
+        data={getCardDatas()}
+        keyExtractor={(item) => `${item.title}-${Math.random()}`}
         renderItem={({ item }) => <Card cardData={item} />}
         horizontal
         pagingEnabled
