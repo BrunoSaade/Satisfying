@@ -1,16 +1,17 @@
-// import { View } from 'react-native';
-// import styled from 'styled-components';
 import { StyleSheet } from 'react-native';
-import { theme } from '../../theme/styles';
 
 export const styles = StyleSheet.create({
-  r_drawer: {
-    backgroundColor: theme.colors.primary[100],
-    fontFamily: theme.font,
+  view: {
+    borderBottomWidth: 1,
+    borderBottomColor: 'white',
+    marginVertical: 10,
+    marginHorizontal: 25
   },
-  r_drawer__logout: {
+  user_text: {
     color: 'white',
-    fontFamily: theme.font,
-    fontSize: 30,
+    alignSelf: 'center',
+    marginTop: 30,
+    marginBottom: 10,
+    fontSize: 20
   }
 })
