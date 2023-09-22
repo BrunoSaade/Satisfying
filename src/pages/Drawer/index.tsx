@@ -7,10 +7,11 @@ const DrawerNavigator = createDrawerNavigator()
 
 export default function Drawer() {
   return (
-    <DrawerNavigator.Navigator drawerContent={(props) => <RDrawer {...props} />} initialRouteName="Home" screenOptions={navigator}>
-
+    <DrawerNavigator.Navigator 
+      drawerContent={(props) => <RDrawer {...props} />} 
+      initialRouteName="Home" 
+      screenOptions={navigator}>
       <DrawerNavigator.Screen name="Pesquisa" component={Home} options={{ headerTitle: '' }} />
-
     </DrawerNavigator.Navigator>
   );
 }

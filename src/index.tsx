@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import Drawer from "./pages/Drawer";
 import Register from "./pages/Register";
 import RecoverPassword from "./pages/RecoverPassword";
+import NewSearch from "./pages/NewSearch";
 
 const Stack = createStackNavigator()
 

@@ -11,12 +11,10 @@ export default function RDrawer(props: any) {
 
   return (
     <DrawerContentScrollView {...props}>
-
       <S.TextDefault style={styles.user_text}> Satisfying </S.TextDefault>
       <View style={styles.view} />
       <DrawerItemList {...props} />
       <DrawerItem label="Sair" onPress={handleLogout} labelStyle={{ color: 'white', fontSize: 20, fontFamily: 'AveriaLibre-Regular' }} />
-
     </DrawerContentScrollView>
   )
 }

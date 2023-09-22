@@ -7,8 +7,6 @@ import Icon from 'react-native-vector-icons/MaterialIcons'
 
 import RInput from "../../components/RInput";
 import RButton from "../../components/RButton";
-import { KeyboardAvoidingView, Platform } from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
 import RContainer from '../../components/RContainer';
 
 export default function Login(props: any) {

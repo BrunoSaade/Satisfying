@@ -6,17 +6,19 @@ interface ContainerProps {
   customWidth?: string;
   alignItems?: string;
   customPaddingVertical?: string;
+  customPaddingHorizontal?: string;
+  justifyContent?: string;
 }
 
 export const S = {
   Container: styled(View)<ContainerProps>`
     flex: 1;
     background-color: ${theme.colors.primary[50]};  
-    justifyContent: center;
+    justifyContent: ${(props) => (props.justifyContent || '')};
     alignItems: ${(props) => (props.alignItems ? props.alignItems : 'center')};
-    width: 100%;
     width: ${(props) => (props.customWidth ? props.customWidth : '100%')};
-    paddingVertical: ${(props) => (props.customPaddingVertical ? props.customPaddingVertical : '')}
+    paddingVertical: ${(props) => (props.customPaddingVertical ? props.customPaddingVertical : '')};
+    paddingHorizontal: ${(props) => (props.customPaddingHorizontal ? props.customPaddingHorizontal : '')};
   `,
   
   TextDefault: styled(Text)`
