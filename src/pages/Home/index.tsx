@@ -7,7 +7,12 @@ import CardList from "../../components/Cards/CardList";
 import { Image } from "react-native";
 import RButton from "../../components/RButton";
 
-export default function Home() {
+export default function Home(props: any) {
+
+  function handleToPage(page: string) {
+    props.navigation.push(page)
+  }
+
   return (
     <RContainer>
       <S.Container>
@@ -19,7 +24,7 @@ export default function Home() {
             <CardList />
           </S.Container>
           <S.Container customPaddingHorizontal="30px" customPaddingVertical="30px">
-            <RButton style={{marginTop: 30}} label="NOVA PESQUISA" color="success" onPress={() => ''}/>
+            <RButton style={{marginTop: 30}} label="NOVA PESQUISA" color="success" onPress={() => handleToPage('Nova Pesquisa')}/>
           </S.Container>
         </S.Container>
       </S.Container>
