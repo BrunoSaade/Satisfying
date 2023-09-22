@@ -5,6 +5,7 @@ import { S } from "../../styles/styles";
 import RInput from "../../components/RInput";
 import RButton from "../../components/RButton";
 import RContainer from '../../components/RContainer';
+import RImagePicker from '../../components/RImagePicker';
 
 export default function NewSearch() {
 
@@ -15,7 +16,7 @@ export default function NewSearch() {
           <S.Container style={{gap: 15}}>
             <RInput label="Nome" placeholder="Digite o nome da pesquisa"/>
             <RInput label="Data" placeholder="Digite a data"/>
-            <RInput label="Imagem" placeholder="Câmera/Galeria de Imagens"/>
+            <RImagePicker />
             <RButton style={{marginTop: 30}} label="CADASTRAR" color="success" onPress={() => ''}/>
           </S.Container>
         </S.Container>
