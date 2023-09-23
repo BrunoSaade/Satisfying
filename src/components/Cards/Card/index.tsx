@@ -26,7 +26,7 @@ export default function Card({ cardData, props }: CardProps) {
       <View style={styles.card}>
         <Image
           source={{ uri: cardData.image }}
-          style={{ width: '80%', height: '50%' }}
+          style={styles.card_img}
         />
         <S.TextDefault style={styles.card_title}>{cardData.title}</S.TextDefault>
         <S.TextDefault style={styles.card_date}>{cardData.date}</S.TextDefault>

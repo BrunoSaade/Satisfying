@@ -11,10 +11,18 @@ import SearchActions from "./pages/SearchActions";
 
 const Stack = createStackNavigator()
 
+const styles = {
+  headerStyle: { backgroundColor: '#2B1D62', elevation: 0 },
+  headerTintColor: 'white', headerTitleStyle: {
+    fontFamily: 'AveriaLibre-Regular',
+    fontSize: 25,
+  }
+}
+
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Login">
+      <Stack.Navigator initialRouteName="Login" screenOptions={styles}>
         <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
         <Stack.Screen name="Drawer" component={Drawer} options={{ headerShown: false }} />
         <Stack.Screen name="Nova Conta" component={Register} />
