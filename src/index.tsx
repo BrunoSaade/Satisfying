@@ -8,6 +8,9 @@ import Register from "./pages/Register";
 import RecoverPassword from "./pages/RecoverPassword";
 import NewSearch from "./pages/NewSearch";
 import SearchActions from "./pages/SearchActions";
+import ModifySearch from "./pages/ModifySearch";
+import Collect from "./pages/Collect";
+import Report from "./pages/Report";
 
 const Stack = createStackNavigator()
 
@@ -27,9 +30,12 @@ export default function App() {
         <Stack.Screen name="Drawer" component={Drawer} options={{ headerShown: false }} />
         <Stack.Screen name="Nova Conta" component={Register} />
         <Stack.Screen name="Recuperação de senha" component={RecoverPassword} />
-        <Stack.Screen name="Home" component={Home} />
+        {/* <Stack.Screen name="Home" component={Home} /> Saade, precisa mesmo desse "Home" aqui? ele não faz parte do Drawer? */}
         <Stack.Screen name="Nova Pesquisa" component={NewSearch} />
         <Stack.Screen name="Carnaval" component={SearchActions} />
+        <Stack.Screen name="Modificar Pesquisa" component={ModifySearch} />
+        <Stack.Screen name="Coleta" component={Collect} />
+        <Stack.Screen name="Relatório" component={Report} />
       </Stack.Navigator>
     </NavigationContainer>
   );

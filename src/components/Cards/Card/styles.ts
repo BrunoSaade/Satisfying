@@ -5,8 +5,8 @@ export const styles = StyleSheet.create({
   card: {
     backgroundColor: 'white',
     fontFamily: theme.font,
-    width: 200,
-    height: 180,
+    width: 210,
+    height: 190,
     borderRadius: 10,
     justifyContent: 'center',
     alignItems: 'center',

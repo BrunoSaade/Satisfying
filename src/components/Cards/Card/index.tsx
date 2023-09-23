@@ -15,8 +15,6 @@ interface CardProps {
 
 export default function Card({ cardData, props }: CardProps) {
 
-  console.log(props)
-
   function handleToPage(page: string) {
     props.navigation.push(page)
   }

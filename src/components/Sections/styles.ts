@@ -10,7 +10,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     backgroundColor: '#2B1D62',
-    maxWidth: 180,
+    width: 175,
     borderRadius: 10,
     paddingVertical: 30
   },
