@@ -6,13 +6,15 @@ import Card from "../Card";
 
 import { getCardDatas } from "../../../store/getters";
 
-export default function CardList() {
+export default function CardList(props: any) {
+
+
   return (
     <S.Container>
       <FlatList
         data={getCardDatas()}
         keyExtractor={(item) => `${item.title}-${Math.random()}`}
-        renderItem={({ item }) => <Card cardData={item} />}
+        renderItem={({ item }) => <Card cardData={item} props={props} />}
         horizontal
         pagingEnabled
         showsHorizontalScrollIndicator={false}

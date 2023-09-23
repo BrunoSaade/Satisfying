@@ -18,13 +18,13 @@ export default function Home(props: any) {
       <S.Container>
         <S.Container>
           <S.Container customPaddingHorizontal="30px" customPaddingVertical="30px">
-            <RInput icon="search" style={{height: 36}} fontSize={20} placeholder="Insira o termo da busca..."/>
+            <RInput icon="search" style={{ height: 36 }} fontSize={20} placeholder="Insira o termo da busca..." />
           </S.Container>
-          <S.Container style={{marginTop: 20}}>
-            <CardList />
+          <S.Container style={{ marginTop: 20 }}>
+            <CardList {...props} />
           </S.Container>
           <S.Container customPaddingHorizontal="30px" customPaddingVertical="30px">
-            <RButton style={{marginTop: 30}} label="NOVA PESQUISA" color="success" onPress={() => handleToPage('Nova Pesquisa')}/>
+            <RButton style={{ marginTop: 30 }} label="NOVA PESQUISA" color="success" onPress={() => handleToPage('Nova Pesquisa')} />
           </S.Container>
         </S.Container>
       </S.Container>

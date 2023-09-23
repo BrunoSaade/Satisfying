@@ -7,6 +7,7 @@ import Drawer from "./pages/Drawer";
 import Register from "./pages/Register";
 import RecoverPassword from "./pages/RecoverPassword";
 import NewSearch from "./pages/NewSearch";
+import SearchActions from "./pages/SearchActions";
 
 const Stack = createStackNavigator()
 
@@ -20,6 +21,7 @@ export default function App() {
         <Stack.Screen name="Recuperação de senha" component={RecoverPassword} />
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Nova Pesquisa" component={NewSearch} />
+        <Stack.Screen name="Carnaval" component={SearchActions} />
       </Stack.Navigator>
     </NavigationContainer>
   );

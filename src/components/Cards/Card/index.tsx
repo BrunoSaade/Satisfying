@@ -9,16 +9,24 @@ interface CardProps {
     image: string;
     title: string;
     date: string;
-  };
+  },
+  props: any;
 }
 
-export default function Card({ cardData }: CardProps) {
+export default function Card({ cardData, props }: CardProps) {
+
+  console.log(props)
+
+  function handleToPage(page: string) {
+    props.navigation.push(page)
+  }
+
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={() => handleToPage('Carnaval')}>
       <View style={styles.card}>
         <Image
           source={{ uri: cardData.image }}
-          style={{width: '80%', height: '50%'}}
+          style={{ width: '80%', height: '50%' }}
         />
         <S.TextDefault style={styles.card_title}>{cardData.title}</S.TextDefault>
         <S.TextDefault style={styles.card_date}>{cardData.date}</S.TextDefault>
