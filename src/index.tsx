@@ -37,7 +37,6 @@ export default function App() {
         <Stack.Screen name="Modificar Pesquisa" component={ModifySearch} />
         <Stack.Screen name="Coleta" component={Collect} options={{ headerShown: false }} />
         <Stack.Screen name="Relatório" component={Report} />
-        <Stack.Screen name="Agradecimento" component={Acknowledgments} />
       </Stack.Navigator>
     </NavigationContainer>
   );
