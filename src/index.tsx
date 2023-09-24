@@ -11,6 +11,7 @@ import SearchActions from "./pages/SearchActions";
 import ModifySearch from "./pages/ModifySearch";
 import Collect from "./pages/Collect";
 import Report from "./pages/Report";
+import Acknowledgments from "./pages/Acknowledgments";
 
 const Stack = createStackNavigator()
 
@@ -36,6 +37,7 @@ export default function App() {
         <Stack.Screen name="Modificar Pesquisa" component={ModifySearch} />
         <Stack.Screen name="Coleta" component={Collect} options={{ headerShown: false }} />
         <Stack.Screen name="Relatório" component={Report} />
+        <Stack.Screen name="Agradecimento" component={Acknowledgments} />
       </Stack.Navigator>
     </NavigationContainer>
   );

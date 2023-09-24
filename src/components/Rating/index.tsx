@@ -8,29 +8,33 @@ import { styles, face1, face2, face3, face4, face5 } from "./styles";
 
 export default function Rating(props: any) {
 
+  const handleButtonPress = () => {
+    props.onClick();
+  }
+
   return (
     <View style={styles.row}>
-      <TouchableOpacity onPress={() => ''} style={styles.column}>
+      <TouchableOpacity onPress={() => handleButtonPress()} style={styles.column}>
         <SvgXml xml={face1} />
         <S.TextDefault style={styles.text}>Péssimo</S.TextDefault>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={() => ''} style={styles.column}>
+      <TouchableOpacity onPress={() => handleButtonPress()} style={styles.column}>
         <SvgXml xml={face2} />
         <S.TextDefault style={styles.text}>Ruim</S.TextDefault>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={() => ''} style={styles.column}>
+      <TouchableOpacity onPress={() => handleButtonPress()} style={styles.column}>
         <SvgXml xml={face3} />
         <S.TextDefault style={styles.text}>Neutro</S.TextDefault>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={() => ''} style={styles.column}>
+      <TouchableOpacity onPress={() => handleButtonPress()} style={styles.column}>
         <SvgXml xml={face4} />
         <S.TextDefault style={styles.text}>Bom</S.TextDefault>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={() => ''} style={styles.column}>
+      <TouchableOpacity onPress={() => handleButtonPress()} style={styles.column}>
         <SvgXml xml={face5} />
         <S.TextDefault style={styles.text}>Excelente</S.TextDefault>
       </TouchableOpacity>
