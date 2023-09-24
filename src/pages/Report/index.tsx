@@ -1,11 +1,19 @@
 import React from "react";
 import { S } from "../../styles/styles";
 import { Text } from "react-native";
+import RContainer from "../../components/RContainer";
 
-export default function Report() {
+export default function Report(props: any) {
+  function handleToPage(page: string) {
+    props.navigation.push(page)
+  }
+
   return (
-    <S.Container>
-      <Text>Report Page</Text>
-    </S.Container>
+    <RContainer>
+      <S.Container>
+
+
+      </S.Container>
+    </RContainer >
   );
 }

@@ -34,7 +34,7 @@ export default function App() {
         <Stack.Screen name="Nova Pesquisa" component={NewSearch} />
         <Stack.Screen name="Carnaval" component={SearchActions} />
         <Stack.Screen name="Modificar Pesquisa" component={ModifySearch} />
-        <Stack.Screen name="Coleta" component={Collect} />
+        <Stack.Screen name="Coleta" component={Collect} options={{ headerShown: false }} />
         <Stack.Screen name="Relatório" component={Report} />
       </Stack.Navigator>
     </NavigationContainer>

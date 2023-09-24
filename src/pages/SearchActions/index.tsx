@@ -16,7 +16,7 @@ export default function SearchActions(props: any) {
 
   return (
     <RContainer>
-      <S.Container style={{ justifyContent: 'center', alignItems: 'space-evenly' }} /* mano, ele dá esse erro mas foi o unico jeito que consegui de ajustar o display */>
+      <S.Container style={{ justifyContent: 'center' }}>
         <Sections {...props} />
       </S.Container>
     </RContainer >
