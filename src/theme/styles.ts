@@ -11,6 +11,7 @@ export const theme = {
     error: '#FD7979',
     blue: {
       50: '#3F92C5',
-    }
+    },
+    default: '#372775'
   },
 };

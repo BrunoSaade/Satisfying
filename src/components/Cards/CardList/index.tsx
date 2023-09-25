@@ -7,23 +7,15 @@ import Card from "../Card";
 import { getCardDatas } from "../../../store/getters";
 import { setSelectedCardResearch } from "../../../store/mutations"
 
-export default function CardList() {
+export default function CardList(props: any) {
 
-  // function handleResearchActionPage(item: object) {
-  //   setSelectedCardResearch(item)
-  //   props.navigation.push(  )
-  // }
 
   return (
     <S.Container>
       <FlatList
         data={getCardDatas()}
         keyExtractor={(item) => `${item.title}-${Math.random()}`}
-        renderItem={
-          ({ item }) => <Card 
-          onPress={() => ''}
-          cardData={item} />
-        }
+        renderItem={({ item }) => <Card cardData={item} props={props} />}
         horizontal
         pagingEnabled
         showsHorizontalScrollIndicator={false}
