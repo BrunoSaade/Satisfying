@@ -1,5 +1,14 @@
 import state from './state'
 
-export function getCardDatas() {
-  return state?.cardsData
-}
+const getters = {
+  getCardDatas() {
+    return state?.cardsData
+  },
+  getSelectedCardResearch() {
+    return state?.selectedCardResearch
+  }
+} 
+
+const { getCardDatas, getSelectedCardResearch } = getters;
+
+export { getCardDatas, getSelectedCardResearch };
