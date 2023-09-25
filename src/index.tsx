@@ -7,8 +7,12 @@ import Drawer from "./pages/Drawer";
 import Register from "./pages/Register";
 import RecoverPassword from "./pages/RecoverPassword";
 import NewResearch from "./pages/NewResarch";
+import ResearchActions from "./pages/ResearchActions";
+
+import { getSelectedCardResearch } from "./store/getters"
 
 const Stack = createStackNavigator()
+
 
 export default function App() {
   return (
@@ -20,6 +24,7 @@ export default function App() {
         <Stack.Screen name="Recuperação de senha" component={RecoverPassword} />
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Nova Pesquisa" component={NewResearch} />
+        <Stack.Screen name="Carnaval" component={ResearchActions} />
       </Stack.Navigator>
     </NavigationContainer>
   );

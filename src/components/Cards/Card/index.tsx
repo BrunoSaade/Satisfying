@@ -9,12 +9,14 @@ interface CardProps {
     image: string;
     title: string;
     date: string;
-  };
+  },
+  onPress: () => void;
 }
 
-export default function Card({ cardData }: CardProps) {
+export default function Card({ cardData, onPress }: CardProps) {
+
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={onPress}>
       <View style={styles.card}>
         <Image
           source={{ uri: cardData.image }}
