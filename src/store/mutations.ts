@@ -1,11 +1,11 @@
 import state from "./state";
 
 const mutations = {
-  setSelectedCardResearch(value: object) {
+  setSelectedCardSearch(value: object) {
     state.selectedCardResearch = value;
   },
 } 
 
-const { setSelectedCardResearch } = mutations;
+const { setSelectedCardSearch } = mutations;
 
-export { setSelectedCardResearch };
+export { setSelectedCardSearch };

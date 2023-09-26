@@ -27,6 +27,7 @@ export const getRInputStyles = (props: RInputProps) => {
       color: theme.colors.blue[50],
       fontSize: props.fontSize || 28,
       paddingVertical: 0,
+      width: '100%'
     }
   })
 }

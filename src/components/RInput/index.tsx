@@ -7,7 +7,7 @@ import { S } from '../../styles/styles';
 import { View } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import { TouchableOpacity } from 'react-native-gesture-handler';
-
+import ErrorMsg from '../ErrorMsg';
 interface RInputProps {
   label?: string;
   placeholder?: string;
@@ -16,7 +16,8 @@ interface RInputProps {
   isPassword?: boolean;
   style?: object,
   fontSize?: number,
-  icon?: string
+  icon?: string,
+  error?: string,
 }
 
 const RInput: FC<RInputProps> = ({ 
@@ -27,7 +28,8 @@ const RInput: FC<RInputProps> = ({
   isPassword = false, 
   style,
   fontSize, 
-  icon
+  icon,
+  error
 }) => {
   const styles = getRInputStyles({ fontSize });
   return (
@@ -38,11 +40,14 @@ const RInput: FC<RInputProps> = ({
           {icon && <Icon name={icon} size={20} color="grey" />}
         </TouchableOpacity>
         <TextInput
+          value={value}
+          onChangeText={onChangeText}
           placeholder={placeholder}
           secureTextEntry={isPassword}
           style={{...styles.r_input}}
         />
       </View>
+      {error && <ErrorMsg error={error}/>}
     </S.Container>
   );
 };
