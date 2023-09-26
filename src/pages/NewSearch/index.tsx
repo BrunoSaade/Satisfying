@@ -7,7 +7,7 @@ import RButton from "../../components/RButton";
 import RContainer from '../../components/RContainer';
 import RImagePicker from '../../components/RImagePicker';
 
-export default function NewSearch() {
+export default function NewSearch(props: any) {
 
   return (
     <RContainer>

@@ -5,6 +5,7 @@ import { styles } from "./styles";
 import Card from "../Card";
 
 import { getCardDatas } from "../../../store/getters";
+import { setSelectedCardResearch } from "../../../store/mutations"
 
 export default function CardList(props: any) {
 
