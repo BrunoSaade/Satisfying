@@ -5,6 +5,7 @@ import { S } from "../../styles/styles";
 import RInput from "../../components/RInput";
 import RButton from "../../components/RButton";
 import RContainer from '../../components/RContainer';
+import { email_validator } from '../../plugins/validate';
 
 export default function RecoverPassword(props: any) {
 
@@ -12,12 +13,7 @@ export default function RecoverPassword(props: any) {
   const [emailIsValid, setEmailIsValid] = React.useState(false);
 
   useEffect(() => {
-    let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
-    if (reg.test(email) === false) {
-      setEmailIsValid(false)
-    } else {
-      setEmailIsValid(true)
-    }
+    setEmailIsValid(email_validator(email))
   }, [email]);
 
   function handleToLogin() {

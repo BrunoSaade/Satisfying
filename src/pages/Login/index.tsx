@@ -8,6 +8,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons'
 import RInput from "../../components/RInput";
 import RButton from "../../components/RButton";
 import RContainer from '../../components/RContainer';
+import { email_validator } from '../../plugins/validate';
 
 export default function Login(props: any) {
 
@@ -16,12 +17,7 @@ export default function Login(props: any) {
   const [emailIsValid, setEmailIsValid] = React.useState(false);
 
   useEffect(() => {
-    let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
-    if (reg.test(email) === false) {
-      setEmailIsValid(false)
-    } else {
-      setEmailIsValid(true)
-    }
+    setEmailIsValid(email_validator(email))
   }, [email]);
 
   function handleToPage(page: string) {
