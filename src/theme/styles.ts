@@ -9,9 +9,8 @@ export const theme = {
     info: '#419ED7',
     success: '#37BD6D',
     error: '#FD7979',
-    blue: {
-      50: '#3F92C5',
-    },
+    blue:'#3F92C5',
+
     default: '#372775'
   },
 };
