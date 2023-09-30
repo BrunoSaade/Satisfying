@@ -15,7 +15,7 @@ export default function Collect(props: any) {
     setShowAcknowledgments(true);
     setTimeout(() => {
       setShowAcknowledgments(false)
-    }, 2000)
+    }, 3000)
   }
 
   function handleToPage() {
