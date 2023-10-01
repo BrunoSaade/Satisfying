@@ -1,11 +1,11 @@
-import React from 'react';
-
+import React, { useState } from 'react';
 import { S } from "../../styles/styles";
-
 import RInput from "../../components/RInput";
 import RButton from "../../components/RButton";
 import RContainer from '../../components/RContainer';
 import RImagePicker from '../../components/RImagePicker';
+import DatePicker from 'react-native-date-picker'
+import { Button } from 'react-native';
 
 export default function NewSearch(props: any) {
 
@@ -19,7 +19,7 @@ export default function NewSearch(props: any) {
   const [errorMessage, setErrorMessage] = React.useState('');
 
   const handleSearch = () => {
-    if(nameIsValid && dateIsValid) {
+    if (nameIsValid && dateIsValid) {
       props.navigation.popToTop()
     } else {
       setErrorMessage("Nome e data obritaórios")
@@ -32,7 +32,7 @@ export default function NewSearch(props: any) {
     if (text === null || text === "" || text.length === 0) {
       setNameIsValid(false)
       setErrorMessageName("Preencha o nome da pesquisa")
-    }else{
+    } else {
       setErrorMessageName("")
       setNameIsValid(true)
     }
@@ -44,26 +44,29 @@ export default function NewSearch(props: any) {
     if (text === null || text === "" || text.length === 0) {
       setDateIsValid(false)
       setErrorMessageDate("Preencha a data da pesquisa")
-    }else{
+    } else {
       setErrorMessageDate("")
       setDateIsValid(true)
     }
   }
 
+  const [date, setDate] = useState(new Date())
+  const [open, setOpen] = useState(false)
+
   return (
     <RContainer>
       <S.Container>
         <S.Container customWidth="653px" customPaddingVertical="30px">
-          <S.Container style={{gap: 15}}>
-            <RInput 
-              label="Nome" 
+          <S.Container style={{ gap: 15 }}>
+            <RInput
+              label="Nome"
               placeholder="Digite o nome da pesquisa"
               onChangeText={handleNameSearch}
               value={nameSearch}
               error={errorMessageName}
             />
-            <RInput 
-              label="Data" 
+            <RInput
+              label="Data"
               placeholder="Digite a data"
               keyboardType="date"
               format="DD/MM/YYYY"
@@ -72,16 +75,30 @@ export default function NewSearch(props: any) {
               error={errorMessageDate}
             />
             <RImagePicker />
-            <RButton 
-              style={{marginTop: 30}}
+            <Button title="Open" onPress={() => setOpen(true)} />
+            <DatePicker
+              modal
+              open={open}
+              date={date}
+              mode={"date"}
+              onConfirm={(date) => {
+                setOpen(false)
+                setDate(date)
+              }}
+              onCancel={() => {
+                setOpen(false)
+              }}
+            />
+            <RButton
+              style={{ marginTop: 30 }}
               label="CADASTRAR"
               color="success"
-              onPress={handleSearch}/>
-              {errorMessage && (
-                <S.ErrorMessage>
-                  {errorMessage}
-                </S.ErrorMessage>
-              )}
+              onPress={handleSearch} />
+            {errorMessage && (
+              <S.ErrorMessage>
+                {errorMessage}
+              </S.ErrorMessage>
+            )}
           </S.Container>
         </S.Container>
       </S.Container>
