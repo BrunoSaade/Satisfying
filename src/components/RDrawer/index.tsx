@@ -2,6 +2,7 @@ import { DrawerContentScrollView, DrawerItem, DrawerItemList } from "@react-navi
 import { View, Text } from "react-native";
 import { S } from "../../styles/styles";
 import { styles } from "./styles";
+import Icon from 'react-native-vector-icons/MaterialIcons'
 
 export default function RDrawer(props: any) {
 
@@ -10,11 +11,26 @@ export default function RDrawer(props: any) {
   }
 
   return (
-    <DrawerContentScrollView {...props}>
-      <S.TextDefault style={styles.user_text}> Satisfying </S.TextDefault>
+    <DrawerContentScrollView {...props} style={styles.r_drawer__container}>
+      <View>
+        <S.TextDefault style={styles.user_text}> usuario@dominio.com </S.TextDefault>
+      </View>
       <View style={styles.view} />
-      <DrawerItemList {...props} />
-      <DrawerItem label="Sair" onPress={handleLogout} labelStyle={{ color: 'white', fontSize: 20, fontFamily: 'AveriaLibre-Regular' }} />
+      <View style={styles.r_drawer__itens}>
+        <DrawerItemList {...props} />
+        <DrawerItem
+          label="Sair"
+          onPress={handleLogout}
+          labelStyle={{
+            color: 'white',
+            fontSize: 20,
+            fontFamily: 'AveriaLibre-Regular',
+          }}
+          icon={() => (
+            <Icon name="logout" size={30} color="white" />
+          )}
+        />
+      </View>
     </DrawerContentScrollView>
   )
 }
