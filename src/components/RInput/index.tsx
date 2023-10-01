@@ -18,6 +18,9 @@ interface RInputProps {
   fontSize?: number,
   icon?: string,
   error?: string,
+  onPress?: () => void
+  iconPosition?: string,
+  editable?: boolean
 }
 
 const RInput: FC<RInputProps> = ({ 
@@ -29,23 +32,30 @@ const RInput: FC<RInputProps> = ({
   style,
   fontSize, 
   icon,
-  error
+  error,
+  onPress,
+  iconPosition = "left",
+  editable
 }) => {
   const styles = getRInputStyles({ fontSize });
   return (
     <S.Container alignItems="start">
       {label && <S.TextDefault style={styles.r_input__label}>{label}</S.TextDefault>}
-      <View style={{...styles.r_input__container, ...style, paddingHorizontal: 10,}}>
-        <TouchableOpacity>
+      <View style={{...styles.r_input__container, ...style, paddingHorizontal: 10, paddingRight: iconPosition === "right" ? 30 : ''}}>
+        { iconPosition === "left" && <TouchableOpacity onPress={onPress}>
           {icon && <Icon name={icon} size={20} color="grey" />}
-        </TouchableOpacity>
+        </TouchableOpacity>}
         <TextInput
+          editable={editable} 
           value={value}
           onChangeText={onChangeText}
           placeholder={placeholder}
           secureTextEntry={isPassword}
           style={{...styles.r_input}}
         />
+        { iconPosition === "right" && <TouchableOpacity onPress={onPress}>
+          {icon && <Icon name={icon} size={20} color="grey" />}
+        </TouchableOpacity>}
       </View>
       {error && <ErrorMsg error={error}/>}
     </S.Container>

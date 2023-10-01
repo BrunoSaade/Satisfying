@@ -31,7 +31,6 @@ export default function App() {
         <Stack.Screen name="Drawer" component={Drawer} options={{ headerShown: false }} />
         <Stack.Screen name="Nova Conta" component={Register} />
         <Stack.Screen name="Recuperação de senha" component={RecoverPassword} />
-        {/* <Stack.Screen name="Home" component={Home} /> Saade, precisa mesmo desse "Home" aqui? ele não faz parte do Drawer? */}
         <Stack.Screen name="Nova Pesquisa" component={NewSearch} />
         <Stack.Screen name="Carnaval" component={SearchActions} />
         <Stack.Screen name="Modificar Pesquisa" component={ModifySearch} />

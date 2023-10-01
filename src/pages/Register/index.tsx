@@ -63,8 +63,6 @@ export default function Register(props: any) {
               value={confirmPassword}
               error={isPasswordDifferent ? "" : "O campo repetir senha difere da senha"} />
             <RButton style={{ marginTop: 30 }} label="CADASTRAR" color="success" onPress={handleLogin} />
-
-            <Button title="Open" onPress={() => setOpen(true)} />
             <DatePicker
               modal
               open={open}

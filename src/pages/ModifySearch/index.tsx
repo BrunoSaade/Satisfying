@@ -63,8 +63,11 @@ export default function NewSearch(props: any) {
               onChangeText={handleDateSearch}
               value={inputDate}
               error={errorMessageDate}
+              icon='calendar-month'
+              iconPosition="right"
+              onPress={() => setOpen(true)}
+              editable={false}
             />
-            <Button title="Open" onPress={() => setOpen(true)} />
             <DatePicker
               modal
               locale={"pt-BR"}
