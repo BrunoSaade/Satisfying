@@ -24,9 +24,10 @@ export const getRInputStyles = (props: RInputProps) => {
     r_input: {
       height: '100%',
       fontFamily: theme.font,
-      color: theme.colors.blue[50],
+      color: theme.colors.blue,
       fontSize: props.fontSize || 28,
       paddingVertical: 0,
+      width: '100%'
     }
   })
 }
