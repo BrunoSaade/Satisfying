@@ -19,6 +19,7 @@ export default function NewSearch(props: any) {
   const [date, setDate] = React.useState(new Date())
   const [open, setOpen] = React.useState(false)
   const [inputDate, setInputDate] = React.useState('')
+
   useEffect(() => {    
     const newDate = new Date(date.toDateString())
     const day = String(newDate.getDate()).padStart(2, '0');
@@ -29,11 +30,7 @@ export default function NewSearch(props: any) {
   }, [date]);  
   
   const handleSearch = () => {
-    if(nameIsValid && dateIsValid) {
-      props.navigation.popToTop()
-    } else {
-      setErrorMessage("Nome e data obrigatórios")
-    }
+    props.navigation.popToTop()
   }
 
   const handleNameSearch = (text: string) => {
@@ -45,18 +42,6 @@ export default function NewSearch(props: any) {
     }else{
       setErrorMessageName("")
       setNameIsValid(true)
-    }
-  }
-
-  const handleDateSearch = (text: string) => {
-    setErrorMessage("")
-    setInputDate(text)
-    if (text === null || text === "" || text.length === 0) {
-      setDateIsValid(false)
-      setErrorMessageDate("Preencha a data da pesquisa")
-    }else{
-      setErrorMessageDate("")
-      setDateIsValid(true)
     }
   }
 
@@ -75,9 +60,7 @@ export default function NewSearch(props: any) {
             <RInput 
               label="Data" 
               placeholder="Digite a data"
-              onChangeText={handleDateSearch}
               value={inputDate}
-              error={errorMessageDate}
               icon='calendar-month'
               iconPosition="right"
               onPress={() => setOpen(true)}
@@ -103,11 +86,6 @@ export default function NewSearch(props: any) {
               label="CADASTRAR"
               color="success"
               onPress={handleSearch}/>
-              {errorMessage && (
-                <S.ErrorMessage>
-                  {errorMessage}
-                </S.ErrorMessage>
-              )}
           </S.Container>
         </S.Container>
       </S.Container>
