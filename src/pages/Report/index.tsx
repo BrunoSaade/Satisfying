@@ -1,6 +1,6 @@
 import React from "react";
 import { S } from "../../styles/styles";
-import { View, Text } from "react-native";
+import { View } from "react-native";
 import RContainer from "../../components/RContainer";
 import { SvgXml } from 'react-native-svg';
 import { styles, imgGraphic } from "./styles";

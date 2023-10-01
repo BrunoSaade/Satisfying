@@ -5,7 +5,6 @@ import RInput from "../../components/RInput";
 import RButton from "../../components/RButton";
 import RContainer from '../../components/RContainer';
 import DatePicker from 'react-native-date-picker'
-import { Button } from 'react-native';
 
 import { email_validator } from '../../plugins/validate';
 

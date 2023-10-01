@@ -12,9 +12,7 @@ export default function NewSearch(props: any) {
 
   const [nameSearch, setNameSearch] = React.useState('');
   const [nameIsValid, setNameIsValid] = React.useState(false);
-  const [dateIsValid, setDateIsValid] = React.useState(false);
   const [errorMessageName, setErrorMessageName] = React.useState('Preencha o nome da pesquisa');
-  const [errorMessageDate, setErrorMessageDate] = React.useState('Preencha a data da pesquisa');
   const [errorMessage, setErrorMessage] = React.useState('');
   const [date, setDate] = React.useState(new Date())
   const [open, setOpen] = React.useState(false)

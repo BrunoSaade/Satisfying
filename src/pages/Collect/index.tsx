@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { S } from "../../styles/styles";
-import { Text } from "react-native";
 import RContainer from "../../components/RContainer";
 import Rating from "../../components/Rating";
 import RButton from "../../components/RButton";

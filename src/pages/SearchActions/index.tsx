@@ -4,11 +4,6 @@ import RContainer from "../../components/RContainer";
 import Sections from "../../components/Sections";
 
 export default function SearchActions(props: any) {
-
-  function handleToPage(page: string) {
-    props.navigation.push(page)
-  }
-
   return (
     <RContainer>
       <S.Container style={{ justifyContent: 'center' }}>

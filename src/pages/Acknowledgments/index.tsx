@@ -1,6 +1,5 @@
 import React from "react";
 import { S } from "../../styles/styles";
-import { Text } from "react-native";
 import RContainer from "../../components/RContainer";
 import { styles } from "./styles";
 
