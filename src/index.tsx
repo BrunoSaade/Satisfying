@@ -24,6 +24,7 @@ const styles = {
 }
 
 export default function App() {
+  
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Login" screenOptions={styles}>
@@ -31,9 +32,13 @@ export default function App() {
         <Stack.Screen name="Drawer" component={Drawer} options={{ headerShown: false }} />
         <Stack.Screen name="Nova Conta" component={Register} />
         <Stack.Screen name="Recuperação de senha" component={RecoverPassword} />
-        {/* <Stack.Screen name="Home" component={Home} /> Saade, precisa mesmo desse "Home" aqui? ele não faz parte do Drawer? */}
         <Stack.Screen name="Nova Pesquisa" component={NewSearch} />
-        <Stack.Screen name="Carnaval" component={SearchActions} />
+        <Stack.Screen 
+          name="Carnaval" 
+          component={SearchActions} 
+          options={({ route }) => ({
+            title: (route.params as { pageTitle?: string })?.pageTitle || 'Carnaval',
+          })}/>
         <Stack.Screen name="Modificar Pesquisa" component={ModifySearch} />
         <Stack.Screen name="Coleta" component={Collect} options={{ headerShown: false }} />
         <Stack.Screen name="Relatório" component={Report} />

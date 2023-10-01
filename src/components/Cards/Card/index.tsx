@@ -10,17 +10,14 @@ interface CardProps {
     title: string;
     date: string;
   },
-  props: any;
+  props?: any;
+  onPress: () => void;
 }
 
-export default function Card({ cardData, props }: CardProps) {
-
-  function handleToPage(page: string) {
-    props.navigation.push(page)
-  }
+export default function Card({ cardData, props, onPress }: CardProps) {
 
   return (
-    <TouchableOpacity onPress={() => handleToPage('Carnaval')}>
+    <TouchableOpacity onPress={onPress}>
       <View style={styles.card}>
         <Image
           source={{ uri: cardData.image }}

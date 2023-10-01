@@ -8,14 +8,13 @@ import RContainer from '../../components/RContainer';
 import RImagePicker from '../../components/RImagePicker';
 
 export default function NewSearch(props: any) {
-
   return (
     <RContainer>
       <S.Container>
         <S.Container customWidth="653px" customPaddingVertical="30px">
           <S.Container style={{gap: 15}}>
-            <RInput label="Nome" placeholder="Digite o nome da pesquisa"/>
-            <RInput label="Data" placeholder="Digite a data"/>
+            <RInput label="Nome" placeholder="Digite o nome da pesquisa" error='Preencha o nome da pesquisa'/>
+            <RInput label="Data" placeholder="Digite a data" error='Preencha a data'/>
             <RImagePicker />
             <RButton style={{marginTop: 30}} label="CADASTRAR" color="success" onPress={() => ''}/>
           </S.Container>
