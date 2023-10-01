@@ -24,8 +24,7 @@ export default function Collect(props: any) {
 
   return (
     <RContainer >
-      <S.Container>
-        <RButton style={styles.closeButton} label="X" color="default" onPress={() => handleToPage()} />
+      <S.Container style={{paddingTop: 40}}>
         {
           showAcknowledgments
             ?

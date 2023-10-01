@@ -7,14 +7,10 @@ import RButton from "../../components/RButton";
 import RContainer from '../../components/RContainer';
 import RImagePicker from '../../components/RImagePicker';
 import DatePicker from 'react-native-date-picker';
-import { Button } from 'react-native';
-import { format } from 'date-fns';
 
 export default function NewSearch(props: any) {
 
   const [nameSearch, setNameSearch] = React.useState('');
-  const [dateSearch, setDateSearch] = React.useState('');
-  const [imageSearch, setImageSearch] = React.useState('');
   const [nameIsValid, setNameIsValid] = React.useState(false);
   const [dateIsValid, setDateIsValid] = React.useState(false);
   const [errorMessageName, setErrorMessageName] = React.useState('Preencha o nome da pesquisa');
@@ -82,8 +78,11 @@ export default function NewSearch(props: any) {
               onChangeText={handleDateSearch}
               value={inputDate}
               error={errorMessageDate}
+              icon='calendar-month'
+              iconPosition="right"
+              onPress={() => setOpen(true)}
+              editable={false}
             />
-            <Button title="Open" onPress={() => setOpen(true)} />
             <DatePicker
               modal
               locale={"pt-BR"}
