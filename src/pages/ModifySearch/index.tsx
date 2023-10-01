@@ -2,7 +2,6 @@ import React,{useState,useEffect} from 'react';
 
 import { S } from "../../styles/styles";
 
-import { theme } from '../../theme/styles';
 import RInput from "../../components/RInput";
 import RButton from "../../components/RButton";
 import RContainer from '../../components/RContainer';
@@ -10,15 +9,10 @@ import RImagePicker from '../../components/RImagePicker';
 import { SvgXml } from 'react-native-svg';
 import { TouchableOpacity } from "react-native-gesture-handler";
 import {styles,svgApagarDados} from "./styles";
-import { View,Modal, Image, Text, StyleSheet } from 'react-native';
+import { View, Modal } from 'react-native';
 import DatePicker from 'react-native-date-picker';
-import { Button } from 'react-native';
 
 export default function NewSearch(props: any) {
-  
-  const [errorMessageDate, setErrorMessageDate] = useState('Preencha a data da pesquisa');
-  const [errorMessage, setErrorMessage] = useState('');
-  const [dateIsValid, setDateIsValid] = useState(false);
   const [visible,setVisible]=useState(false);
   const [date, setDate] = useState(new Date())
   const [open, setOpen] = useState(false)
@@ -33,24 +27,10 @@ export default function NewSearch(props: any) {
     setInputDate(formattedDate)
   }, [date]);  
   
-
   const handleDeleteButtonPress = () => {
     setVisible(true);
   }
   
-  const handleDateSearch = (text: string) => {
-    setErrorMessage("")
-    setInputDate(text)
-    if (text === null || text === "" || text.length === 0) {
-      setDateIsValid(false)
-      setErrorMessageDate("Preencha a data da pesquisa")
-    }else{
-      setErrorMessageDate("")
-      setDateIsValid(true)
-    }
-  }
-
-
   return (
     <RContainer>
       <S.Container>
@@ -60,9 +40,7 @@ export default function NewSearch(props: any) {
             <RInput 
               label="Data" 
               placeholder="Digite a data"
-              onChangeText={handleDateSearch}
               value={inputDate}
-              error={errorMessageDate}
               icon='calendar-month'
               iconPosition="right"
               onPress={() => setOpen(true)}

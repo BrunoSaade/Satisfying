@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { S } from "../../styles/styles";
-import { Text } from "react-native";
 import RContainer from "../../components/RContainer";
 import Rating from "../../components/Rating";
 import RButton from "../../components/RButton";
@@ -24,7 +23,8 @@ export default function Collect(props: any) {
 
   return (
     <RContainer >
-      <S.Container style={{paddingTop: 40}}>
+      <S.Container>
+        <RButton style={styles.closeButton} label="" color="default" onPress={() => handleToPage()} />
         {
           showAcknowledgments
             ?

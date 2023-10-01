@@ -1,5 +1,5 @@
 import { DrawerContentScrollView, DrawerItem, DrawerItemList } from "@react-navigation/drawer";
-import { View, Text } from "react-native";
+import { View } from "react-native";
 import { S } from "../../styles/styles";
 import { styles } from "./styles";
 import Icon from 'react-native-vector-icons/MaterialIcons'
