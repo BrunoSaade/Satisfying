@@ -22,7 +22,7 @@ export default function NewSearch(props: any) {
     if(nameIsValid && dateIsValid) {
       props.navigation.popToTop()
     } else {
-      setErrorMessage("Nome e data obritaórios")
+      setErrorMessage("Nome e data obrigatório")
     }
   }
 
