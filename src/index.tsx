@@ -2,7 +2,6 @@ import React from "react";
 import Login from "./pages/Login";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import Home from "./pages/Home";
 import Drawer from "./pages/Drawer";
 import Register from "./pages/Register";
 import RecoverPassword from "./pages/RecoverPassword";
@@ -11,7 +10,6 @@ import SearchActions from "./pages/SearchActions";
 import ModifySearch from "./pages/ModifySearch";
 import Collect from "./pages/Collect";
 import Report from "./pages/Report";
-import Acknowledgments from "./pages/Acknowledgments";
 
 const Stack = createStackNavigator()
 
@@ -31,7 +29,6 @@ export default function App() {
         <Stack.Screen name="Drawer" component={Drawer} options={{ headerShown: false }} />
         <Stack.Screen name="Nova Conta" component={Register} />
         <Stack.Screen name="Recuperação de senha" component={RecoverPassword} />
-        {/* <Stack.Screen name="Home" component={Home} /> Saade, precisa mesmo desse "Home" aqui? ele não faz parte do Drawer? */}
         <Stack.Screen name="Nova Pesquisa" component={NewSearch} />
         <Stack.Screen name="Carnaval" component={SearchActions} />
         <Stack.Screen name="Modificar Pesquisa" component={ModifySearch} />

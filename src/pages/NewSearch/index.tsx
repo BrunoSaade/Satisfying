@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { S } from "../../styles/styles";
 
@@ -6,18 +6,84 @@ import RInput from "../../components/RInput";
 import RButton from "../../components/RButton";
 import RContainer from '../../components/RContainer';
 import RImagePicker from '../../components/RImagePicker';
+import DatePicker from 'react-native-date-picker';
 
-export default function NewSearch() {
+export default function NewSearch(props: any) {
+
+  const [nameSearch, setNameSearch] = React.useState('');
+  const [nameIsValid, setNameIsValid] = React.useState(false);
+  const [errorMessageName, setErrorMessageName] = React.useState('Preencha o nome da pesquisa');
+  const [errorMessage, setErrorMessage] = React.useState('');
+  const [date, setDate] = React.useState(new Date())
+  const [open, setOpen] = React.useState(false)
+  const [inputDate, setInputDate] = React.useState('')
+
+  useEffect(() => {    
+    const newDate = new Date(date.toDateString())
+    const day = String(newDate.getDate()).padStart(2, '0');
+    const month = String(newDate.getMonth() + 1).padStart(2, '0');
+    const year = newDate.getFullYear();
+    const formattedDate = `${day}/${month}/${year}`;    
+    setInputDate(formattedDate)
+  }, [date]);  
+  
+  const handleSearch = () => {
+    props.navigation.popToTop()
+  }
+
+  const handleNameSearch = (text: string) => {
+    setErrorMessage("")
+    setNameSearch(text)
+    if (text === null || text === "" || text.length === 0) {
+      setNameIsValid(false)
+      setErrorMessageName("Preencha o nome da pesquisa")
+    }else{
+      setErrorMessageName("")
+      setNameIsValid(true)
+    }
+  }
 
   return (
     <RContainer>
       <S.Container>
         <S.Container customWidth="653px" customPaddingVertical="30px">
           <S.Container style={{gap: 15}}>
-            <RInput label="Nome" placeholder="Digite o nome da pesquisa"/>
-            <RInput label="Data" placeholder="Digite a data"/>
+            <RInput 
+              label="Nome" 
+              placeholder="Digite o nome da pesquisa"
+              onChangeText={handleNameSearch}
+              value={nameSearch}
+              error={errorMessageName}
+            />            
+            <RInput 
+              label="Data" 
+              placeholder="Digite a data"
+              value={inputDate}
+              icon='calendar-month'
+              iconPosition="right"
+              onPress={() => setOpen(true)}
+              editable={false}
+            />
+            <DatePicker
+              modal
+              locale={"pt-BR"}
+              open={open}
+              date={date}
+              mode={"date"}
+              onConfirm={(date) => {
+                setOpen(false)
+                setDate(date)
+              }}
+              onCancel={() => {
+                setOpen(false)
+              }}
+            />
             <RImagePicker />
-            <RButton style={{marginTop: 30}} label="CADASTRAR" color="success" onPress={() => ''}/>
+            <RButton 
+              style={{marginTop: 30}}
+              label="CADASTRAR"
+              color="success"
+              onPress={handleSearch}/>
           </S.Container>
         </S.Container>
       </S.Container>

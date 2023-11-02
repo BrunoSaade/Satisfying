@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { S } from "../../styles/styles";
-import { Text } from "react-native";
 import RContainer from "../../components/RContainer";
 import Rating from "../../components/Rating";
 import RButton from "../../components/RButton";
@@ -15,7 +14,7 @@ export default function Collect(props: any) {
     setShowAcknowledgments(true);
     setTimeout(() => {
       setShowAcknowledgments(false)
-    }, 2000)
+    }, 3000)
   }
 
   function handleToPage() {
@@ -25,7 +24,7 @@ export default function Collect(props: any) {
   return (
     <RContainer >
       <S.Container>
-        <RButton style={styles.closeButton} label="X" color="default" onPress={() => handleToPage()} />
+        <RButton style={styles.closeButton} label="" color="default" onPress={() => handleToPage()} />
         {
           showAcknowledgments
             ?

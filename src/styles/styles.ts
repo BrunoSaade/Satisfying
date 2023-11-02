@@ -24,4 +24,11 @@ export const S = {
   TextDefault: styled(Text)`
     fontFamily: ${theme.font};
   `,
-} 
+
+  ErrorMessage: styled(Text)`
+  fontFamily: ${theme.font};
+  color: red;
+  fontSize: 14px;
+  marginTop: 10px;
+  `,
+}; 

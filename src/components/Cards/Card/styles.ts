@@ -17,7 +17,7 @@ export const styles = StyleSheet.create({
     height: '50%'
   },
   card_title: {
-    color: theme.colors.blue[50],
+    color: theme.colors.blue,
     fontSize: 28,
   },
   card_date: {
