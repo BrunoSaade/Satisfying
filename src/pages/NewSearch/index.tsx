@@ -1,62 +1,80 @@
 import React, { useEffect } from 'react';
-
 import { S } from "../../styles/styles";
-
 import RInput from "../../components/RInput";
 import RButton from "../../components/RButton";
 import RContainer from '../../components/RContainer';
 import RImagePicker from '../../components/RImagePicker';
 import DatePicker from 'react-native-date-picker';
+import { db, auth } from '../../service/firebase/firebase';
+import { addDoc, collection, doc, setDoc } from 'firebase/firestore';
+
 
 export default function NewSearch(props: any) {
 
   const [nameSearch, setNameSearch] = React.useState('');
-  const [nameIsValid, setNameIsValid] = React.useState(false);
   const [errorMessageName, setErrorMessageName] = React.useState('Preencha o nome da pesquisa');
-  const [errorMessage, setErrorMessage] = React.useState('');
   const [date, setDate] = React.useState(new Date())
   const [open, setOpen] = React.useState(false)
   const [inputDate, setInputDate] = React.useState('')
 
-  useEffect(() => {    
+
+  useEffect(() => {
     const newDate = new Date(date.toDateString())
     const day = String(newDate.getDate()).padStart(2, '0');
     const month = String(newDate.getMonth() + 1).padStart(2, '0');
     const year = newDate.getFullYear();
-    const formattedDate = `${day}/${month}/${year}`;    
+    const formattedDate = `${day}/${month}/${year}`;
     setInputDate(formattedDate)
-  }, [date]);  
-  
-  const handleSearch = () => {
-    props.navigation.popToTop()
-  }
+  }, [date]);
+
 
   const handleNameSearch = (text: string) => {
-    setErrorMessage("")
     setNameSearch(text)
     if (text === null || text === "" || text.length === 0) {
-      setNameIsValid(false)
       setErrorMessageName("Preencha o nome da pesquisa")
-    }else{
+    } else {
       setErrorMessageName("")
-      setNameIsValid(true)
     }
   }
+
+
+  const handleCreate = () => {
+    const userUID = auth.currentUser?.uid
+    let userDoc: any = null;
+
+    if (userUID) {
+      userDoc = doc(db, 'users', userUID)
+      setDoc(userDoc, {})
+        .then(() => {
+          const subCollection = collection(userDoc, 'searchs')
+          const docSearch = {
+            title: nameSearch,
+            date: inputDate,
+            image: 'https://picsum.photos/id/4/200/300' // PRECISA IMPLEMENTAR A CAPTURA DINÂMICA DA IMAGEM
+          }
+          addDoc(subCollection, docSearch)
+            .then(() => { props.navigation.push('Drawer') })
+            .catch((error) => { console.error(+ error) })
+        })
+        .catch((error) => { console.error(error) })
+    }
+  }
+
 
   return (
     <RContainer>
       <S.Container>
         <S.Container customWidth="653px" customPaddingVertical="30px">
-          <S.Container style={{gap: 15}}>
-            <RInput 
-              label="Nome" 
+          <S.Container style={{ gap: 15 }}>
+            <RInput
+              label="Nome"
               placeholder="Digite o nome da pesquisa"
               onChangeText={handleNameSearch}
               value={nameSearch}
               error={errorMessageName}
-            />            
-            <RInput 
-              label="Data" 
+            />
+            <RInput
+              label="Data"
               placeholder="Digite a data"
               value={inputDate}
               icon='calendar-month'
@@ -79,11 +97,11 @@ export default function NewSearch(props: any) {
               }}
             />
             <RImagePicker />
-            <RButton 
-              style={{marginTop: 30}}
+            <RButton
+              style={{ marginTop: 30 }}
               label="CADASTRAR"
               color="success"
-              onPress={handleSearch}/>
+              onPress={handleCreate} />
           </S.Container>
         </S.Container>
       </S.Container>
