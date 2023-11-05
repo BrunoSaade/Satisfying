@@ -8,6 +8,8 @@ import RContainer from '../../components/RContainer';
 import { email_validator } from '../../plugins/validate';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../service/firebase/firebase';
+import { useDispatch } from 'react-redux';
+import { reducerSetUser } from '../../service/redux/userSlice';
 
 
 export default function Login(props: any) {
@@ -16,6 +18,7 @@ export default function Login(props: any) {
   const [email, setEmail] = React.useState('');
   const [emailIsValid, setEmailIsValid] = React.useState(false);
   const [loginError, setLoginError] = React.useState(false);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     setEmailIsValid(email_validator(email))
@@ -24,8 +27,9 @@ export default function Login(props: any) {
   function handleToLogin() {
     if (emailIsValid) {
       signInWithEmailAndPassword(auth, email, password)
-        .then(() => {
+        .then((userCredential) => {
           setLoginError(false)
+          dispatch(reducerSetUser({ uid: userCredential.user.uid }))
           props.navigation.push('Drawer')
         })
         .catch((error) => {

@@ -5,22 +5,22 @@ import { styles } from "./styles";
 import Card from "../Card";
 import { db, auth } from '../../../service/firebase/firebase';
 import { collection, doc, onSnapshot } from 'firebase/firestore';
+import { useSelector } from "react-redux";
 
 export default function CardList(props: any) {
 
   const [array, setArray] = React.useState<any[]>([])
+  const userUID = useSelector((state: any) => state.user.uid)
 
   useEffect(() => {
     const getSnapshot = () => {
-      const userUID = auth.currentUser?.uid
       let userDoc: any = null
-
       if (userUID) {
         userDoc = doc(db, 'users', userUID);
         const subCollection = collection(userDoc, 'searchs')
 
         onSnapshot(subCollection, (snapshot) => {
-          const newArray = snapshot.docs.map((doc) => ({ ...doc.data() }));
+          const newArray = snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
           setArray(newArray);
         })
       }

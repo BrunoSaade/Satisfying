@@ -23,7 +23,7 @@ export default function Register(props: any) {
     } else {
       setisPasswordEquals(false)
     }
-  }, [confirmPassword]);
+  }, [confirmPassword, password]);
 
 
   useEffect(() => {

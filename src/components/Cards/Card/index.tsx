@@ -3,9 +3,12 @@ import { S } from "../../../styles/styles";
 import { Image, Text, View } from "react-native";
 import { styles } from "./styles";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { useDispatch } from 'react-redux';
+import { reducerSetSelectedCard } from '../../../service/redux/selectedCardSlice';
 
 interface CardProps {
   cardData: {
+    id: string;
     image: string;
     title: string;
     date: string;
@@ -15,7 +18,17 @@ interface CardProps {
 
 export default function Card({ cardData, props }: CardProps) {
 
+  const dispatch = useDispatch();
+
   function handleToPage(page: string) {
+
+    dispatch(reducerSetSelectedCard({
+      id: cardData.id,
+      title: cardData.title,
+      date: cardData.date,
+      image: cardData.image
+    }))
+
     props.navigation.push(page)
   }
 

@@ -10,6 +10,8 @@ import SearchActions from "./pages/SearchActions";
 import ModifySearch from "./pages/ModifySearch";
 import Collect from "./pages/Collect";
 import Report from "./pages/Report";
+import { Provider } from "react-redux";
+import { store } from "./service/redux/store";
 
 const Stack = createStackNavigator()
 
@@ -23,18 +25,20 @@ const styles = {
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Login" screenOptions={styles}>
-        <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
-        <Stack.Screen name="Drawer" component={Drawer} options={{ headerShown: false }} />
-        <Stack.Screen name="Nova Conta" component={Register} />
-        <Stack.Screen name="Recuperação de senha" component={RecoverPassword} />
-        <Stack.Screen name="Nova Pesquisa" component={NewSearch} />
-        <Stack.Screen name="Carnaval" component={SearchActions} />
-        <Stack.Screen name="Modificar Pesquisa" component={ModifySearch} />
-        <Stack.Screen name="Coleta" component={Collect} options={{ headerShown: false }} />
-        <Stack.Screen name="Relatório" component={Report} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Login" screenOptions={styles}>
+          <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
+          <Stack.Screen name="Drawer" component={Drawer} options={{ headerShown: false }} />
+          <Stack.Screen name="Nova Conta" component={Register} />
+          <Stack.Screen name="Recuperação de senha" component={RecoverPassword} />
+          <Stack.Screen name="Nova Pesquisa" component={NewSearch} />
+          <Stack.Screen name="Carnaval" component={SearchActions} />
+          <Stack.Screen name="Modificar Pesquisa" component={ModifySearch} />
+          <Stack.Screen name="Coleta" component={Collect} options={{ headerShown: false }} />
+          <Stack.Screen name="Relatório" component={Report} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </Provider>
   );
 }

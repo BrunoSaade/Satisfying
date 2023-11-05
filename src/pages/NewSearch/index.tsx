@@ -5,8 +5,9 @@ import RButton from "../../components/RButton";
 import RContainer from '../../components/RContainer';
 import RImagePicker from '../../components/RImagePicker';
 import DatePicker from 'react-native-date-picker';
-import { db, auth } from '../../service/firebase/firebase';
+import { db } from '../../service/firebase/firebase';
 import { addDoc, collection, doc, setDoc } from 'firebase/firestore';
+import { useSelector } from 'react-redux';
 
 
 export default function NewSearch(props: any) {
@@ -16,6 +17,7 @@ export default function NewSearch(props: any) {
   const [date, setDate] = React.useState(new Date())
   const [open, setOpen] = React.useState(false)
   const [inputDate, setInputDate] = React.useState('')
+  const userUID = useSelector((state: any) => state.user.uid)
 
 
   useEffect(() => {
@@ -39,9 +41,7 @@ export default function NewSearch(props: any) {
 
 
   const handleCreate = () => {
-    const userUID = auth.currentUser?.uid
     let userDoc: any = null;
-
     if (userUID) {
       userDoc = doc(db, 'users', userUID)
       setDoc(userDoc, {})
