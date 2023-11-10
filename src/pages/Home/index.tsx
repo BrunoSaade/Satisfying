@@ -15,14 +15,14 @@ export default function Home(props: any) {
     <RContainer>
       <S.Container>
         <S.Container>
-          <S.Container customPaddingHorizontal="30px" customPaddingVertical="20px">
-            <RInput icon="search" style={{ height: 35 }} fontSize={20} placeholder="Insira o termo da busca..." />
+          <S.Container customPaddingHorizontal="30px" customPaddingVertical="15px">
+            <RInput icon="search" style={{ height: 25 }} fontSize={20} placeholder="Insira o termo da busca..." />
           </S.Container>
-          <S.Container style={{ marginTop: 20 }}>
+          <S.Container>
             <CardList {...props} />
           </S.Container>
-          <S.Container customPaddingHorizontal="30px" customPaddingVertical="30px">
-            <RButton style={{ marginTop: 30 }} label="NOVA PESQUISA" color="success" onPress={() => handleToPage('Nova Pesquisa')} />
+          <S.Container customPaddingHorizontal="30px" customPaddingVertical="10px">
+            <RButton customHeight={30} label="NOVA PESQUISA" color="success" onPress={() => handleToPage('Nova Pesquisa')} />
           </S.Container>
         </S.Container>
       </S.Container>

@@ -64,8 +64,8 @@ export default function NewSearch(props: any) {
   return (
     <RContainer>
       <S.Container>
-        <S.Container customWidth="653px" customPaddingVertical="30px">
-          <S.Container style={{ gap: 15 }}>
+        <S.Container customWidth="653px" customPaddingVertical="10px">
+          <S.Container style={{ gap: 5 }}>
             <RInput
               label="Nome"
               placeholder="Digite o nome da pesquisa"
@@ -98,7 +98,7 @@ export default function NewSearch(props: any) {
             />
             <RImagePicker />
             <RButton
-              style={{ marginTop: 30 }}
+              style={{ marginTop: 5 }}
               label="CADASTRAR"
               color="success"
               onPress={handleCreate} />

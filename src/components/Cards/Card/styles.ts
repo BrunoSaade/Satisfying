@@ -5,8 +5,8 @@ export const styles = StyleSheet.create({
   card: {
     backgroundColor: 'white',
     fontFamily: theme.font,
-    width: 210,
-    height: 190,
+    width: 170,
+    height: 150,
     borderRadius: 10,
     justifyContent: 'center',
     alignItems: 'center',
@@ -18,7 +18,7 @@ export const styles = StyleSheet.create({
   },
   card_title: {
     color: theme.colors.blue,
-    fontSize: 28,
+    fontSize: 24,
   },
   card_date: {
     fontSize: 14,

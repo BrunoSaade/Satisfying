@@ -3,8 +3,8 @@ import { theme } from '../../theme/styles';
 
 export const styles = StyleSheet.create({
   r_image_picker__box: {
-      width: 335,
-      height: 94,
+      width: 280,
+      height: 64,
       backgroundColor: '#FFFFFF',
       justifyContent: 'center',
       alignItems: 'center',
@@ -12,6 +12,6 @@ export const styles = StyleSheet.create({
     r_image_picker__label: {
       fontFamily: theme.font,
       color: 'white',
-      fontSize: 28,
+      fontSize: 20,
     },
 })

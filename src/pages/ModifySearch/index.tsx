@@ -9,9 +9,10 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import { styles, svgApagarDados } from "./styles";
 import { View, Modal } from 'react-native';
 import DatePicker from 'react-native-date-picker';
-import { db } from '../../service/firebase/firebase';
+import { db, storage } from '../../service/firebase/firebase';
 import { collection, deleteDoc, doc, updateDoc } from 'firebase/firestore';
 import { useSelector } from "react-redux";
+import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 
 
 
@@ -19,6 +20,8 @@ export default function NewSearch(props: any) {
 
   const userUID = useSelector((state: any) => state.user.uid)
   const selectedCard = useSelector((state: any) => state.selectedCard)
+
+  const selectedImage = useSelector((state: any) => state.selectedImage.image.image)
 
   const [nameSearch, setNameSearch] = React.useState(selectedCard.title)
   const [date, setDate] = useState(new Date())
@@ -52,8 +55,39 @@ export default function NewSearch(props: any) {
     }
   }
 
+  function generateRandomId() {
+    const id = Date.now().toString(16) + Math.random().toString(16)
+    return id.replace(/\./g, '')
+  }
 
-  const handleSave = () => {
+  const handleUpload = async () => {
+
+    const fileRandomRef = "images/" + generateRandomId() + '.jpeg'
+
+    const imageRef = (ref(storage, fileRandomRef))
+    const file = await fetch(selectedImage)
+    const blob = await file.blob()
+
+    uploadBytes(imageRef, blob, {contentType: 'image/jpeg'})
+      .then(() => {
+        getImgUploadedSource(imageRef)
+      })
+      .catch((error) => {
+        console.error(error)
+      })
+  }
+
+  const getImgUploadedSource = (imageRef: any) => {
+    getDownloadURL(imageRef)
+      .then((url) => {
+        handleSave(url)
+      })
+      .catch((error) => {
+        console.error(error)
+      })
+  }
+
+  const handleSave = (url: any) => {
     let userDoc: any = null;
     if (userUID) {
       userDoc = doc(db, 'users', userUID);
@@ -61,7 +95,7 @@ export default function NewSearch(props: any) {
       const docSearch = {
         title: nameSearch,
         date: inputDate,
-        image: 'https://picsum.photos/id/4/200/300' // PRECISA IMPLEMENTAR A CAPTURA DINÂMICA DA IMAGEM
+        image: url
       };
       const docRef = doc(subCollection, selectedCard.id);
       updateDoc(docRef, docSearch)
@@ -69,13 +103,12 @@ export default function NewSearch(props: any) {
         .catch((error) => { console.error(+ error) });
     }
   }
-
-
+  
   return (
     <RContainer>
       <S.Container>
-        <S.Container customWidth="653px" customPaddingVertical="30px">
-          <S.Container style={{ gap: 15 }}>
+        <S.Container customWidth="653px" customPaddingVertical="15px">
+          <S.Container style={{ gap: 5 }}>
             <RInput
               label="Nome"
               value={nameSearch}
@@ -107,10 +140,10 @@ export default function NewSearch(props: any) {
             <RImagePicker />
 
             <View style={styles.row}>
-              <RButton style={styles.column_save} label="SALVAR" color="success" onPress={handleSave} />
+              <RButton style={styles.column_save} label="SALVAR" color="success" onPress={handleUpload}/>
 
               <TouchableOpacity onPress={() => setVisible(true)} style={styles.column_delete}>
-                <SvgXml xml={svgApagarDados} />
+                <SvgXml xml={svgApagarDados} width={30} />
                 <S.TextDefault style={styles.text}>Apagar</S.TextDefault>
               </TouchableOpacity>
             </View >

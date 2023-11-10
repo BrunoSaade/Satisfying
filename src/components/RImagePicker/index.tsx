@@ -6,9 +6,16 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 
 import * as ImagePicker from 'react-native-image-picker';
 import { Alert, Image, View } from 'react-native';
+import { reducerSetSelectedImage } from '../../service/redux/selectedImageSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
 export default function RImagePicker() {
-  const [img, setSelectedImg] = React.useState<any>(null);
+  const selectedCard = useSelector((state: any) => state.selectedCard)
+  const selectedImage = useSelector((state: any) => state.selectedImage.image.image)
+
+  console.log(selectedCard)
+
+  const dispatch = useDispatch();
 
   async function handleGalleryImg() {
     const options: ImagePicker.ImageLibraryOptions = {
@@ -18,7 +25,9 @@ export default function RImagePicker() {
     const selectedImg = await ImagePicker.launchImageLibrary(options)
 
     if(selectedImg?.assets) {
-      setSelectedImg(selectedImg.assets[0].uri)
+      dispatch(reducerSetSelectedImage({
+        image: selectedImg.assets[0].uri
+      }))
       return
     }
   }
@@ -32,7 +41,9 @@ export default function RImagePicker() {
     const selectedImg = await ImagePicker.launchCamera(options)
 
     if(selectedImg?.assets) {
-      setSelectedImg(selectedImg.assets[0].uri)
+      dispatch(reducerSetSelectedImage({
+        image: selectedImg.assets[0].uri
+      }))
       return
     }
   }
@@ -67,10 +78,10 @@ export default function RImagePicker() {
       <View style={{width: 335}}>
         <TouchableOpacity onPress={handleImagePicker}>
           <View style={styles.r_image_picker__box}>
-            {img ? (
-              <Image style={{ width: '100%', height: '100%' }} source={{ uri: img }} />
+            {selectedImage ? (
+              <Image style={{ width: '100%', height: '100%' }} source={{ uri: selectedImage }} />
             ) : (
-              <S.TextDefault style={{ fontSize: 20 }}>Câmera/Galeria de Imagens</S.TextDefault>
+              <S.TextDefault style={{ fontSize: 16 }}>Câmera/Galeria de Imagens</S.TextDefault>
             )}
           </View>
         </TouchableOpacity>
