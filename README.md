@@ -1,6 +1,19 @@
+# Satisfying
+
+The satisfaction survey is essential to understand how a corporation's customers feel about the company. Through the data collected, the company can make improvements to its process, people and/or products/services.
+In this sense, this subject proposes the development of an application for mobile devices compatible with Android/iOS to carry out research with customers/users of a corporation.
+
+Project developed during the Mobile Device Development discipline, at the Federal Technological University of Paraná (UTFPR).
+
+## 💻 Techs
+
+- [React Native](https://reactnative.dev/)
+- [React Native Charts](https://github.com/JesperLekland/react-native-svg-charts)
+- [Firebase](https://firebase.google.com/?gad=1&gclid=CjwKCAiA6byqBhAWEiwAnGCA4FlDQf5pAVC7lH6ebbdA1mCYPgAoOkwOtTsunMhw3zuYLQYYZAjpqBoCJ-QQAvD_BwE&gclsrc=aw.ds&hl)
+
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
-# Getting Started
+## 🚀 Getting Started
 
 >**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
 
@@ -18,11 +31,11 @@ npm start
 yarn start
 ```
 
-## Step 2: Start your Application
+### Step 2: Start your Application
 
 Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
 
-### For Android
+#### For Android
 
 ```bash
 # using npm
@@ -32,7 +45,7 @@ npm run android
 yarn android
 ```
 
-### For iOS
+#### For iOS
 
 ```bash
 # using npm
@@ -46,7 +59,7 @@ If everything is set up _correctly_, you should see your new app running in your
 
 This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
 
-## Step 3: Modifying your App
+### Step 3: Modifying your App
 
 Now that you have successfully run the app, let's modify it.
 
@@ -55,11 +68,11 @@ Now that you have successfully run the app, let's modify it.
 
    For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
 
-## Congratulations! :tada:
+### Congratulations! :tada:
 
 You've successfully run and modified your React Native App. :partying_face:
 
-### Now what?
+#### Now what?
 
 - If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
 - If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
@@ -68,7 +81,7 @@ You've successfully run and modified your React Native App. :partying_face:
 
 If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
 
-# Learn More
+## Learn More
 
 To learn more about React Native, take a look at the following resources:
 
