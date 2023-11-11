@@ -11,7 +11,7 @@ export const styles = StyleSheet.create({
     gap: 10,
   },
   view_logo__text: {
-    fontSize: 40,
+    fontSize: 30,
     color: 'white',
   }
 })

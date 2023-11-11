@@ -1,14 +1,22 @@
-import React from 'react';
+import React, { FC, useEffect } from 'react';
 
 import { S } from '../../styles/styles';
 import { styles } from './styles'
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 import * as ImagePicker from 'react-native-image-picker';
-import { Alert, Image, View } from 'react-native';
+import { Alert, Image, ImageSourcePropType, View } from 'react-native';
+import { reducerSetSelectedImage } from '../../service/redux/selectedImageSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
-export default function RImagePicker() {
-  const [img, setSelectedImg] = React.useState<any>(null);
+interface RImagePickerProps {
+  cardImage?: any
+}
+
+const RImagePicker: FC<RImagePickerProps> = ({cardImage}) => {
+  const selectedImage = useSelector((state: any) => state.selectedImage.image.image)
+
+  const dispatch = useDispatch();
 
   async function handleGalleryImg() {
     const options: ImagePicker.ImageLibraryOptions = {
@@ -18,7 +26,9 @@ export default function RImagePicker() {
     const selectedImg = await ImagePicker.launchImageLibrary(options)
 
     if(selectedImg?.assets) {
-      setSelectedImg(selectedImg.assets[0].uri)
+      dispatch(reducerSetSelectedImage({
+        image: selectedImg.assets[0].uri
+      }))
       return
     }
   }
@@ -32,7 +42,9 @@ export default function RImagePicker() {
     const selectedImg = await ImagePicker.launchCamera(options)
 
     if(selectedImg?.assets) {
-      setSelectedImg(selectedImg.assets[0].uri)
+      dispatch(reducerSetSelectedImage({
+        image: selectedImg.assets[0].uri
+      }))
       return
     }
   }
@@ -61,16 +73,22 @@ export default function RImagePicker() {
     )
   }
 
+  useEffect(() => {
+    dispatch(reducerSetSelectedImage({
+      image: ''
+    }))
+  }, [dispatch]);
+
   return (
     <S.Container alignItems="start">
       <S.TextDefault style={styles.r_image_picker__label}>Imagem</S.TextDefault>
       <View style={{width: 335}}>
         <TouchableOpacity onPress={handleImagePicker}>
           <View style={styles.r_image_picker__box}>
-            {img ? (
-              <Image style={{ width: '100%', height: '100%' }} source={{ uri: img }} />
+            {selectedImage || cardImage ? (
+              <Image style={{ width: '100%', height: '100%' }} source={{ uri: selectedImage || cardImage }} />
             ) : (
-              <S.TextDefault style={{ fontSize: 20 }}>Câmera/Galeria de Imagens</S.TextDefault>
+              <S.TextDefault style={{ fontSize: 16 }}>Câmera/Galeria de Imagens</S.TextDefault>
             )}
           </View>
         </TouchableOpacity>
@@ -78,3 +96,5 @@ export default function RImagePicker() {
     </S.Container>
   );
 };
+
+export default RImagePicker;

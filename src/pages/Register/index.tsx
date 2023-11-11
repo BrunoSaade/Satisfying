@@ -51,8 +51,8 @@ export default function Register(props: any) {
   return (
     <RContainer>
       <S.Container>
-        <S.Container customWidth="653px" customPaddingVertical="30px">
-          <S.Container style={{ gap: 15 }}>
+        <S.Container customWidth="653px" customPaddingVertical="15px">
+          <S.Container style={{ gap: 5 }}>
             <RInput
               label="E-mail"
               placeholder="E-mail"
@@ -73,7 +73,7 @@ export default function Register(props: any) {
               value={confirmPassword}
               error={emptyField ? "Preencha todos os campos" : (!isPasswordEquals ? "O campo repetir senha difere da senha" : "")}
             />
-            <RButton style={{ marginTop: 30 }} label="CADASTRAR" color="success" onPress={handleLogin} />
+            <RButton style={{ marginTop: 10 }} label="CADASTRAR" color="success" onPress={handleLogin} />
           </S.Container>
         </S.Container>
       </S.Container>

@@ -21,12 +21,17 @@ export default function CardList(props: any) {
 
         onSnapshot(subCollection, (snapshot) => {
           const newArray = snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
-          setArray(newArray);
+
+          const filteredArray = newArray.filter((item) =>
+            (item as any).title.toLowerCase().includes(props.searchTerm.toLowerCase())
+          );
+
+          setArray(filteredArray);
         })
       }
     }
     getSnapshot();
-  }, []);
+  }, [props.searchTerm]);
 
 
   return (

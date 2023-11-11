@@ -14,14 +14,14 @@ export const getRButtonStyles = (props: RButtonProps) => {
   return StyleSheet.create({
     r_button: {
       backgroundColor: theme.colors[props.color],
-      height: props.customHeight || 50,
+      height: props.customHeight || 35,
       width: props.customWidth || '100%',
       alignItems: 'center',
       justifyContent: 'center',
     },
     r_button__text: {
       color: 'white',
-      fontSize: !!props.customHeight ? 24 : 28,
+      fontSize: !!props.customHeight ? 20 : 24,
       fontFamily: theme.font,
     },
   })

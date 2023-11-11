@@ -46,12 +46,12 @@ export default function Login(props: any) {
   return (
     <RContainer>
       <S.Container>
-        <S.Container customWidth="653px" customPaddingVertical="30px">
+        <S.Container customWidth="653px" customPaddingVertical="15px">
           <S.Container style={styles.view_logo}>
             <S.TextDefault style={styles.view_logo__text}>Satisfying.you</S.TextDefault>
-            <Icon name="sentiment-satisfied" size={60} color="white" />
+            <Icon name="sentiment-satisfied" size={40} color="white" />
           </S.Container>
-          <S.Container style={{ gap: 15 }}>
+          <S.Container style={{ gap: 5 }}>
             <RInput label="E-mail" placeholder="E-mail" value={email} onChangeText={setEmail} />
             <RInput
               label="Senha"
@@ -60,13 +60,12 @@ export default function Login(props: any) {
               onChangeText={setPassword}
               isPassword
               error={(emailIsValid || email == '') && !loginError ? "" : "E-mail e/ou senha inválidos."} />
-            <RButton style={{ marginTop: 30 }} label="Entrar" color="success" onPress={() => handleToLogin()} />
+            <RButton style={{ marginTop: 15 }} label="Entrar" color="success" onPress={() => handleToLogin()} />
           </S.Container>
-          <S.Container style={{ marginTop: 70 }}>
-            <RButton customHeight={37} label="Criar minha conta" color="info" onPress={() => handleToPage('Nova Conta')} />
+          <S.Container style={{ marginTop: 20 }}>
+            <RButton label="Criar minha conta" color="info" onPress={() => handleToPage('Nova Conta')} />
             <RButton
               style={{ marginTop: 15 }}
-              customHeight={37}
               label="Esqueci minha senha"
               color="neutral"
               onPress={() => handleToPage('Recuperação de senha')} />
