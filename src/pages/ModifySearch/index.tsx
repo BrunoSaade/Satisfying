@@ -137,7 +137,7 @@ export default function NewSearch(props: any) {
                 setOpen(false)
               }}
             />
-            <RImagePicker />
+            <RImagePicker cardImage={selectedCard.image}/>
 
             <View style={styles.row}>
               <RButton style={styles.column_save} label="SALVAR" color="success" onPress={handleUpload}/>

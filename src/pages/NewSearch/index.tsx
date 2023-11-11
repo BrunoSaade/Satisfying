@@ -5,12 +5,14 @@ import RButton from "../../components/RButton";
 import RContainer from '../../components/RContainer';
 import RImagePicker from '../../components/RImagePicker';
 import DatePicker from 'react-native-date-picker';
-import { db } from '../../service/firebase/firebase';
+import { db, storage } from '../../service/firebase/firebase';
 import { addDoc, collection, doc, setDoc } from 'firebase/firestore';
 import { useSelector } from 'react-redux';
-
+import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 
 export default function NewSearch(props: any) {
+
+  const selectedImage = useSelector((state: any) => state.selectedImage.image.image)
 
   const [nameSearch, setNameSearch] = React.useState('');
   const [errorMessageName, setErrorMessageName] = React.useState('Preencha o nome da pesquisa');
@@ -18,7 +20,6 @@ export default function NewSearch(props: any) {
   const [open, setOpen] = React.useState(false)
   const [inputDate, setInputDate] = React.useState('')
   const userUID = useSelector((state: any) => state.user.uid)
-
 
   useEffect(() => {
     const newDate = new Date(date.toDateString())
@@ -29,7 +30,6 @@ export default function NewSearch(props: any) {
     setInputDate(formattedDate)
   }, [date]);
 
-
   const handleNameSearch = (text: string) => {
     setNameSearch(text)
     if (text === null || text === "" || text.length === 0) {
@@ -39,8 +39,39 @@ export default function NewSearch(props: any) {
     }
   }
 
+  function generateRandomId() {
+    const id = Date.now().toString(16) + Math.random().toString(16)
+    return id.replace(/\./g, '')
+  }
 
-  const handleCreate = () => {
+  const handleUpload = async () => {
+
+    const fileRandomRef = "images/" + generateRandomId() + '.jpeg'
+
+    const imageRef = (ref(storage, fileRandomRef))
+    const file = await fetch(selectedImage)
+    const blob = await file.blob()
+
+    uploadBytes(imageRef, blob, {contentType: 'image/jpeg'})
+      .then(() => {
+        getImgUploadedSource(imageRef)
+      })
+      .catch((error) => {
+        console.error(error)
+      })
+  }
+
+  const getImgUploadedSource = (imageRef: any) => {
+    getDownloadURL(imageRef)
+      .then((url) => {
+        handleCreate(url)
+      })
+      .catch((error) => {
+        console.error(error)
+      })
+  }
+
+  const handleCreate = (url: any) => {
     let userDoc: any = null;
     if (userUID) {
       userDoc = doc(db, 'users', userUID)
@@ -50,7 +81,7 @@ export default function NewSearch(props: any) {
           const docSearch = {
             title: nameSearch,
             date: inputDate,
-            image: 'https://picsum.photos/id/4/200/300' // PRECISA IMPLEMENTAR A CAPTURA DINÂMICA DA IMAGEM
+            image: url
           }
           addDoc(subCollection, docSearch)
             .then(() => { props.navigation.push('Drawer') })
@@ -101,7 +132,7 @@ export default function NewSearch(props: any) {
               style={{ marginTop: 5 }}
               label="CADASTRAR"
               color="success"
-              onPress={handleCreate} />
+              onPress={handleUpload} />
           </S.Container>
         </S.Container>
       </S.Container>
