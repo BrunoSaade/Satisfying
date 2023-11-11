@@ -61,20 +61,21 @@ export default function NewSearch(props: any) {
   }
 
   const handleUpload = async () => {
-
-    const fileRandomRef = "images/" + generateRandomId() + '.jpeg'
-
-    const imageRef = (ref(storage, fileRandomRef))
-    const file = await fetch(selectedImage)
-    const blob = await file.blob()
-
-    uploadBytes(imageRef, blob, {contentType: 'image/jpeg'})
-      .then(() => {
-        getImgUploadedSource(imageRef)
-      })
-      .catch((error) => {
-        console.error(error)
-      })
+    if (selectedImage) {
+      const fileRandomRef = "images/" + generateRandomId() + '.jpeg'
+      const imageRef = (ref(storage, fileRandomRef))
+      const file = await fetch(selectedImage)
+      const blob = await file.blob()
+      uploadBytes(imageRef, blob, {contentType: 'image/jpeg'})
+        .then(() => {
+          getImgUploadedSource(imageRef)
+        })
+        .catch((error) => {
+          console.error(error)
+        })
+    } else {
+      handleSave(selectedCard.image)
+    }
   }
 
   const getImgUploadedSource = (imageRef: any) => {
