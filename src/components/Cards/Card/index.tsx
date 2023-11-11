@@ -33,7 +33,7 @@ export default function Card({ cardData, props }: CardProps) {
   }
 
   return (
-    <TouchableOpacity onPress={() => handleToPage('Carnaval')}>
+    <TouchableOpacity onPress={() => handleToPage('SearchActions')}>
       <View style={styles.card}>
         <Image
           source={{ uri: cardData.image }}

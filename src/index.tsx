@@ -33,7 +33,11 @@ export default function App() {
           <Stack.Screen name="Nova Conta" component={Register} />
           <Stack.Screen name="Recuperação de senha" component={RecoverPassword} />
           <Stack.Screen name="Nova Pesquisa" component={NewSearch} />
-          <Stack.Screen name="Carnaval" component={SearchActions} />
+          <Stack.Screen
+            name="SearchActions"
+            component={SearchActions}
+            initialParams={{ title: "SearchActions" }}
+          />
           <Stack.Screen name="Modificar Pesquisa" component={ModifySearch} />
           <Stack.Screen name="Coleta" component={Collect} options={{ headerShown: false }} />
           <Stack.Screen name="Relatório" component={Report} />
