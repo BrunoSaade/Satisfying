@@ -81,7 +81,8 @@ export default function NewSearch(props: any) {
           const docSearch = {
             title: nameSearch,
             date: inputDate,
-            image: url
+            image: url,
+            rates: {}
           }
           addDoc(subCollection, docSearch)
             .then(() => { props.navigation.push('Drawer') })

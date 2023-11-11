@@ -6,36 +6,58 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import { styles, face1, face2, face3, face4, face5 } from "./styles";
 import { db } from '../../service/firebase/firebase';
 import { collection, doc, getDoc, updateDoc } from 'firebase/firestore';
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { reducerSetSelectedCard } from '../../service/redux/selectedCardSlice';
 
 
 export default function Rating(props: any) {
 
+  const dispatch = useDispatch();
   const userUID = useSelector((state: any) => state.user.uid)
   const selectedCard = useSelector((state: any) => state.selectedCard)
 
   const handleButtonPress = (rate: string) => {
-    let userDoc: any = null;
     if (userUID) {
-      userDoc = doc(db, 'users', userUID);
+      const userDoc = doc(db, 'users', userUID);
       const subCollection = collection(userDoc, 'searchs');
       const docRef = doc(subCollection, selectedCard.id);
-      getDoc(docRef).then((e) => {
-        const existingRates = e.data()?.rates || {};
-        const docSearch = {
-          rates: {
+  
+      getDoc(docRef)
+        .then((e) => {
+          const existingRates = e.data()?.rates || {};
+          const updatedRates = {
             ...existingRates,
-            [rate]: (e.data()?.rates?.[rate] || 0) + 1 
-          }
-        };
-        updateDoc(docRef, docSearch)
-          .then(() => { })
-          .catch((error) => { console.error(+ error) });
-      })
-        .catch()
+            [rate]: (existingRates[rate] || 0) + 1,
+          };
+  
+          const docSearch = {
+            rates: updatedRates,
+          };
+
+          return updateDoc(docRef, docSearch);
+        })
+        .then(() => {
+          return getDoc(docRef);
+        })
+        .then((updatedData) => {
+          dispatch(
+            reducerSetSelectedCard({
+              id: selectedCard.id,
+              title: updatedData.data()?.title,
+              date: updatedData.data()?.date,
+              image: updatedData.data()?.image,
+              rates: updatedData.data()?.rates,
+            })
+          );
+        })
+        .catch((error) => {
+          console.error('Erro ao lidar com a atualização:', error);
+        })
+        .finally(() => {
+          props.onClick();
+        });
     }
-    props.onClick();
-  }
+  };
 
   return (
     <View style={styles.row}>

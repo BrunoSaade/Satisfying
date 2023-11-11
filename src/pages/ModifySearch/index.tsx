@@ -96,7 +96,7 @@ export default function NewSearch(props: any) {
       const docSearch = {
         title: nameSearch,
         date: inputDate,
-        image: url
+        image: url,
       };
       const docRef = doc(subCollection, selectedCard.id);
       updateDoc(docRef, docSearch)

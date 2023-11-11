@@ -12,6 +12,7 @@ interface CardProps {
     image: string;
     title: string;
     date: string;
+    rates: Object;
   },
   props: any;
 }
@@ -26,7 +27,8 @@ export default function Card({ cardData, props }: CardProps) {
       id: cardData.id,
       title: cardData.title,
       date: cardData.date,
-      image: cardData.image
+      image: cardData.image,
+      rates: cardData.rates,
     }))
 
     props.navigation.push(page)
