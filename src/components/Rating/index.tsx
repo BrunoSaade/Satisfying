@@ -21,7 +21,13 @@ export default function Rating(props: any) {
       const subCollection = collection(userDoc, 'searchs');
       const docRef = doc(subCollection, selectedCard.id);
       getDoc(docRef).then((e) => {
-        const docSearch = { [rate]: (e.data()?.[rate] || 0) + 1 };
+        const existingRates = e.data()?.rates || {};
+        const docSearch = {
+          rates: {
+            ...existingRates,
+            [rate]: (e.data()?.rates?.[rate] || 0) + 1 
+          }
+        };
         updateDoc(docRef, docSearch)
           .then(() => { })
           .catch((error) => { console.error(+ error) });
