@@ -15,20 +15,21 @@ export const styles = StyleSheet.create({
       },
       row:{
         flexDirection: 'row',
-        marginTop: 30
+        marginTop: 5,
+        justifyContent: 'flex-start',
+        alignItems: 'center',
       },
       text: {
         textAlign: 'center',
         color: 'white',
-        fontSize: 23
+        fontSize: 15
       },
       column_save: {  
-        width:478,
-        marginRight: 103,
-        flexDirection: 'row',
+        width: '90%'
       },
       column_delete: { 
-        alignItems: 'center'
+        alignItems: 'center',
+        marginLeft: 20
        },
        modal:{
        },
