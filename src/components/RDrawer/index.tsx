@@ -2,6 +2,7 @@ import { DrawerContentScrollView, DrawerItem, DrawerItemList } from "@react-navi
 import { View } from "react-native";
 import { S } from "../../styles/styles";
 import { styles } from "./styles";
+import { db, auth } from '../../service/firebase/firebase';
 import Icon from 'react-native-vector-icons/MaterialIcons'
 
 export default function RDrawer(props: any) {
@@ -13,7 +14,7 @@ export default function RDrawer(props: any) {
   return (
     <DrawerContentScrollView {...props} style={styles.r_drawer__container}>
       <View>
-        <S.TextDefault style={styles.user_text}> usuario@dominio.com </S.TextDefault>
+        <S.TextDefault style={styles.user_text}> {auth.currentUser?.email} </S.TextDefault>
       </View>
       <View style={styles.view} />
       <View style={styles.r_drawer__itens}>
